@@ -30,6 +30,10 @@ const useStyles = makeStyles({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
+
+	linkSelectedColor: {
+		color: 'var(--light-a-hover)',
+	},
 });
 
 export default function TabMenu() {
@@ -51,7 +55,12 @@ export default function TabMenu() {
 			>
 				<Tab
 					label={
-						<Link to="/" className={classes.link}>
+						<Link
+							to="/"
+							className={`${classes.link} ${
+								value === '/' && classes.linkSelectedColor
+							}`}
+						>
 							<Home />
 						</Link>
 					}
@@ -61,7 +70,12 @@ export default function TabMenu() {
 				/>
 				<Tab
 					label={
-						<Link to="/timeline" className={classes.link}>
+						<Link
+							to="/timeline"
+							className={`${classes.link} ${
+								value === '/timeline' && classes.linkSelectedColor
+							}`}
+						>
 							Timeline
 						</Link>
 					}
@@ -71,7 +85,12 @@ export default function TabMenu() {
 				/>
 				<Tab
 					label={
-						<Link to="/topclips" className={classes.link}>
+						<Link
+							to="/topclips"
+							className={`${classes.link} ${
+								value === '/topclips' && classes.linkSelectedColor
+							}`}
+						>
 							Top Clips
 						</Link>
 					}
