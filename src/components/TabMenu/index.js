@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 	tab: {
 		textTransform: 'none',
 		position: 'relative',
-		margin: '0px 10px',
+		margin: '0px 15px',
 	},
 
 	link: {
@@ -78,16 +78,6 @@ export default function TabMenu() {
 					className={classes.tab}
 					disableRipple
 					value="/topclips"
-				/>
-				<Tab
-					label={
-						<Link to="/myclips" className={classes.link}>
-							My Clips
-						</Link>
-					}
-					className={classes.tab}
-					disableRipple
-					value="/myclips"
 				/>
 			</Tabs>
 		</Paper>
