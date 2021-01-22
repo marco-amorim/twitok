@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.nav`
@@ -21,8 +20,19 @@ export const HeaderLogo = styled.h1`
 	}
 `;
 
-export const HeaderLogin = styled(Link)`
+export const HeaderLogin = styled.button`
 	position: absolute;
 	top: 20px;
 	right: 20px;
+	border: none;
+	outline: none;
+	background: none;
+	font-size: 1rem;
+	color: var(--light-text-base);
+	cursor: pointer;
+	font-weight: bold;
+
+	&:hover {
+		color: var(--light-a-hover);
+	}
 `;

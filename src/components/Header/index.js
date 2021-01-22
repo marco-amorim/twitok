@@ -12,7 +12,9 @@ class Header extends Component {
 				</HeaderLogo>
 				<HeaderContainer>
 					<TabMenu />
-					<HeaderLogin to="/">Login</HeaderLogin>
+					<HeaderLogin onClick={() => window.alert('login!')}>
+						Login
+					</HeaderLogin>
 				</HeaderContainer>
 			</>
 		);
