@@ -4,9 +4,11 @@ const GlobalStyle = createGlobalStyle`
 
   :root {
     --light-bg: #f7f7f8;
-    --light-text-base: '#0e0e10';
+    --light-text-base: #0e0e10;
     --light-a-hover: #9147ff;
 
+    --dark-text-base: #efeff1;
+    
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -43,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: var(--light-bg);
-    color: var(---light-text-base);
+    color: var(--light-text-base);
     font-family: 'Arial', monospace;
     font-size: 1rem;
   }

@@ -10,10 +10,15 @@ export const HeaderContainer = styled.nav`
 	font-size: 1.2rem;
 `;
 
-export const HeaderTitle = styled.h1`
+export const HeaderLogo = styled.h1`
 	font-size: 2rem;
 	display: flex;
 	justify-content: center;
+	cursor: default;
+
+	span {
+		color: var(--light-a-hover);
+	}
 `;
 
 export const HeaderLogin = styled(Link)`

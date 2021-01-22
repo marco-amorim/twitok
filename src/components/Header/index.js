@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import TabMenu from '../TabMenu';
-import { HeaderContainer, HeaderLogin, HeaderTitle } from './styles';
+import { HeaderContainer, HeaderLogin, HeaderLogo } from './styles';
+import logoLight from '../../assets/images/logo-light.svg';
 
 class Header extends Component {
 	render() {
 		return (
 			<>
-				<HeaderTitle>
-					<Link to="/">Twitok</Link>
-				</HeaderTitle>
+				<HeaderLogo>
+					<img src={logoLight} alt="logo" />
+				</HeaderLogo>
 				<HeaderContainer>
 					<TabMenu />
 					<HeaderLogin to="/">Login</HeaderLogin>
