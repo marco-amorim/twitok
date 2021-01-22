@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Home } from '@material-ui/icons/';
 
 const useStyles = makeStyles({
@@ -38,7 +38,8 @@ const useStyles = makeStyles({
 
 export default function TabMenu() {
 	const classes = useStyles();
-	const [value, setValue] = React.useState(window.location.pathname);
+	const { pathname } = useLocation();
+	const [value, setValue] = React.useState(pathname);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
