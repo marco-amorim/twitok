@@ -6,4 +6,5 @@ export const PageTitle = styled.h2`
 	align-items: center;
 	justify-content: center;
 	height: 40px;
+	margin-bottom: 70px;
 `;
