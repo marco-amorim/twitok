@@ -5,7 +5,7 @@ export const HeaderContainer = styled.nav`
 	justify-content: center;
 	align-items: center;
 	margin-top: 30px;
-	margin-bottom: 125px;
+	margin-bottom: 100px;
 	font-size: 1.2rem;
 
 	@media (max-width: 767px) {
