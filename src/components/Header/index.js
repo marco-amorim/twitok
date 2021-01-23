@@ -1,24 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TabMenu from '../TabMenu';
 import { HeaderContainer, HeaderLogin, HeaderLogo } from './styles';
 import logoLight from '../../assets/images/logo-light.svg';
+import { signInWithGoogle, getAuth, signOut } from '../../services/firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import LoadingSpinner from '../LoadingSpinner';
 
-class Header extends Component {
-	render() {
-		return (
-			<>
-				<HeaderLogo>
-					<img src={logoLight} alt="logo" />
-				</HeaderLogo>
-				<HeaderContainer>
-					<HeaderLogin onClick={() => window.alert('login!')}>
-						Sign In
+const Header = () => {
+	const [user, loading] = useAuthState(getAuth());
+
+	const renderMenu = () => {
+		if (user) {
+			return <HeaderLogin onClick={signOut}>Logout</HeaderLogin>;
+		}
+		return <HeaderLogin onClick={signInWithGoogle}>Sign In</HeaderLogin>;
+	};
+
+	return (
+		<>
+			<HeaderLogo>
+				<img src={logoLight} alt="logo" />
+			</HeaderLogo>
+			<HeaderContainer>
+				{loading ? (
+					<HeaderLogin disabled={true} style={{ pointerEvents: 'none' }}>
+						<LoadingSpinner height="25px" width="25px" />
 					</HeaderLogin>
-					<TabMenu />
-				</HeaderContainer>
-			</>
-		);
-	}
-}
+				) : (
+					renderMenu()
+				)}
+
+				<TabMenu />
+			</HeaderContainer>
+		</>
+	);
+};
 
 export default Header;
