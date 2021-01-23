@@ -12,15 +12,10 @@ export const HeaderContainer = styled.nav`
 	}
 `;
 
-export const HeaderLogo = styled.h1`
-	font-size: 2rem;
+export const HeaderLogo = styled.div`
 	display: flex;
 	justify-content: center;
-	cursor: default;
-
-	span {
-		color: var(--purple-default);
-	}
+	margin: 20px 0px;
 `;
 
 export const HeaderLogin = styled.button`
