@@ -11,10 +11,10 @@ class Header extends Component {
 					<img src={logoLight} alt="logo" />
 				</HeaderLogo>
 				<HeaderContainer>
-					<TabMenu />
 					<HeaderLogin onClick={() => window.alert('login!')}>
 						Sign In
 					</HeaderLogin>
+					<TabMenu />
 				</HeaderContainer>
 			</>
 		);

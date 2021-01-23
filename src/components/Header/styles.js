@@ -7,6 +7,10 @@ export const HeaderContainer = styled.nav`
 	margin-top: 30px;
 	margin-bottom: 125px;
 	font-size: 1.2rem;
+
+	@media (max-width: 767px) {
+		flex-direction: column;
+	}
 `;
 
 export const HeaderLogo = styled.h1`
@@ -40,5 +44,10 @@ export const HeaderLogin = styled.button`
 	&:hover {
 		color: var(--white);
 		background-color: var(--bg-button-hover);
+	}
+
+	@media (max-width: 767px) {
+		position: unset;
+		margin-bottom: 30px;
 	}
 `;
