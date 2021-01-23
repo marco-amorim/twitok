@@ -13,7 +13,7 @@ class Header extends Component {
 				<HeaderContainer>
 					<TabMenu />
 					<HeaderLogin onClick={() => window.alert('login!')}>
-						Login
+						Sign In
 					</HeaderLogin>
 				</HeaderContainer>
 			</>

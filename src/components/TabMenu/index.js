@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 	},
 
 	linkSelectedColor: {
-		color: 'var(--light-a-hover)',
+		color: 'var(--purple-default)',
 	},
 });
 

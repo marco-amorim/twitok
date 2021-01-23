@@ -6,13 +6,13 @@ export const MuiTheme = createMuiTheme({
 			textColorPrimary: {
 				color: 'var(--light-text-base)',
 				'&$selected': {
-					color: 'var(--light-a-hover)',
+					color: 'var(--purple-default)',
 				},
 			},
 		},
 		PrivateTabIndicator: {
 			colorPrimary: {
-				backgroundColor: 'var(--light-a-hover)',
+				backgroundColor: 'var(--purple-default)',
 			},
 		},
 	},

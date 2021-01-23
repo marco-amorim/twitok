@@ -5,7 +5,10 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --light-bg: #f7f7f8;
     --light-text-base: #0e0e10;
-    --light-a-hover: #9147ff;
+
+    --purple-default: #9147ff;
+    --white: #FFFFFF;
+    --bg-button-hover: #772ce8;
 
     --dark-text-base: #efeff1;
     
@@ -39,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
     transition: color 0.2s;
 
     &:hover {
-      color: var(--light-a-hover);
+      color: var(--purple-default);
     }
   }
 

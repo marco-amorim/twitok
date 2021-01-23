@@ -16,22 +16,29 @@ export const HeaderLogo = styled.h1`
 	cursor: default;
 
 	span {
-		color: var(--light-a-hover);
+		color: var(--purple-default);
 	}
 `;
 
 export const HeaderLogin = styled.button`
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	position: absolute;
-	top: 20px;
-	right: 20px;
+	top: 10px;
+	right: 10px;
+	padding: 10px 15px 10px 15px;
 	border: none;
+	border-radius: 5px;
 	outline: none;
-	background: none;
+	background-color: var(--purple-default);
 	font-size: 1rem;
-	color: var(--light-text-base);
+	color: var(--white);
 	cursor: pointer;
+	transition: background-color 0.2s;
 
 	&:hover {
-		color: var(--light-a-hover);
+		color: var(--white);
+		background-color: var(--bg-button-hover);
 	}
 `;
