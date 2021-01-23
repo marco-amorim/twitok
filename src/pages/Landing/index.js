@@ -2,23 +2,20 @@ import React from 'react';
 
 import kappaImg from '../../assets/images/Kappa.png';
 import landingImg from '../../assets/images/landing.svg';
-import {
-	LandingContainer,
-	LandingIcon,
-	LandingImage,
-	LandingTitle,
-} from './styles';
+import { LandingIcon, LandingImage, LandingTitle } from './styles';
+
+import { PageContainer } from '../../assets/styles/PageContainer';
 
 const Landing = () => {
 	return (
-		<LandingContainer>
+		<PageContainer>
 			<LandingTitle>
 				Real people, real videos
 				<LandingIcon src={kappaImg} alt="Kappa" />
 			</LandingTitle>
 
 			<LandingImage src={landingImg} alt="Landing" />
-		</LandingContainer>
+		</PageContainer>
 	);
 };
 

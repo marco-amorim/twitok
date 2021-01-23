@@ -1,7 +1,12 @@
 import React from 'react';
+import { PageContainer } from '../../assets/styles/PageContainer';
 
 const Timeline = () => {
-	return <h1 style={{ textAlign: 'center' }}>Timeline</h1>;
+	return (
+		<PageContainer>
+			<h2>Timeline</h2>
+		</PageContainer>
+	);
 };
 
 export default Timeline;

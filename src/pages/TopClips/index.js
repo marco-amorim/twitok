@@ -1,7 +1,12 @@
 import React from 'react';
+import { PageContainer } from '../../assets/styles/PageContainer';
 
 const TopClips = () => {
-	return <h1 style={{ textAlign: 'center' }}>TopClips</h1>;
+	return (
+		<PageContainer>
+			<h2>Top Clips</h2>
+		</PageContainer>
+	);
 };
 
 export default TopClips;

@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-export const LandingContainer = styled.section`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-`;
-
 export const LandingTitle = styled.h2`
 	text-align: center;
 	display: flex;
@@ -15,8 +8,8 @@ export const LandingTitle = styled.h2`
 `;
 
 export const LandingIcon = styled.img`
-	height: 50px;
-	width: 50px;
+	height: 40px;
+	width: 40px;
 `;
 
 export const LandingImage = styled.img`

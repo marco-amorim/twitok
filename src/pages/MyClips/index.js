@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MyClips = () => {
-	return <div>MyClips</div>;
+	return <h2>My Clips</h2>;
 };
 
 export default MyClips;
