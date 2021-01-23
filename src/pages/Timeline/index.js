@@ -1,10 +1,11 @@
 import React from 'react';
 import { PageContainer } from '../../assets/styles/PageContainer';
+import { PageTitle } from '../../assets/styles/PageTitle';
 
 const Timeline = () => {
 	return (
 		<PageContainer>
-			<h2>Timeline</h2>
+			<PageTitle>Timeline</PageTitle>
 		</PageContainer>
 	);
 };

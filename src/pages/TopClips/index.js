@@ -1,10 +1,11 @@
 import React from 'react';
 import { PageContainer } from '../../assets/styles/PageContainer';
+import { PageTitle } from '../../assets/styles/PageTitle';
 
 const TopClips = () => {
 	return (
 		<PageContainer>
-			<h2>Top Clips</h2>
+			<PageTitle>Top Clips</PageTitle>
 		</PageContainer>
 	);
 };
