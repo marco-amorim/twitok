@@ -2,8 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu&display=swap');
-
   :root {
     --light-bg: #f7f7f8;
     --light-text-base: #0e0e10;
