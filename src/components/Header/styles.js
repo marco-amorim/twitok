@@ -4,8 +4,7 @@ export const HeaderContainer = styled.nav`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 30px;
-	margin-bottom: 100px;
+	margin: 40px 0px;
 	font-size: 1.2rem;
 
 	@media (max-width: 767px) {
