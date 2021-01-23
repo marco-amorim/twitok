@@ -18,6 +18,7 @@ const useStyles = makeStyles({
 		textTransform: 'none',
 		position: 'relative',
 		margin: '0px 15px',
+		fontWeight: 'bold',
 	},
 
 	link: {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Timeline = () => {
-	return <div>Timeline</div>;
+	return <h1 style={{ textAlign: 'center' }}>Timeline</h1>;
 };
 
 export default Timeline;

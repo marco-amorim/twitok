@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu&display=swap');
+
   :root {
     --light-bg: #f7f7f8;
     --light-text-base: #0e0e10;
@@ -46,9 +48,17 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: var(--light-bg);
     color: var(--light-text-base);
-    font-family: 'Arial', monospace;
+    font-family: 'Ubuntu';
     font-size: 1rem;
   }
+
+  * {
+    font-family: 'Roboto', sans-serif;
+  }
+    
+   h1, h2, h3, h4, h5 {
+    font-family: 'Ubuntu', sans-serif;
+   }
 `;
 
 export default GlobalStyle;

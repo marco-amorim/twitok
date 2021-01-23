@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TopClips = () => {
-	return <div>TopClips</div>;
+	return <h1 style={{ textAlign: 'center' }}>TopClips</h1>;
 };
 
 export default TopClips;

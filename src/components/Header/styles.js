@@ -30,7 +30,6 @@ export const HeaderLogin = styled.button`
 	font-size: 1rem;
 	color: var(--light-text-base);
 	cursor: pointer;
-	font-weight: bold;
 
 	&:hover {
 		color: var(--light-a-hover);
