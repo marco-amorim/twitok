@@ -30,7 +30,7 @@ export const HeaderLogin = styled.button`
 	align-items: center;
 	position: absolute;
 	top: 15px;
-	right: 10px;
+	right: 15px;
 	padding: 10px 15px 10px 15px;
 	border: none;
 	border-radius: 5px;
