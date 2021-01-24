@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { Home } from '@material-ui/icons/';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { TabButton } from './styles';
