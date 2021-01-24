@@ -20,8 +20,8 @@ function App({ Component, pageProps }) {
 			<Head>
 				<title>Twitok</title>
 			</Head>
+			<GlobalStyle />
 			<ThemeProvider theme={MuiTheme}>
-				<GlobalStyle />
 				<Header />
 				<Component {...pageProps} />
 			</ThemeProvider>
