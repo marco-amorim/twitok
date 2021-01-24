@@ -3,6 +3,12 @@ import { createMuiTheme } from '@material-ui/core';
 export const MuiTheme = createMuiTheme({
 	overrides: {
 		MuiTab: {
+			root: {
+				fontWeight: 'bold',
+				margin: '0px 15px',
+				textTransform: 'none',
+			},
+
 			textColorPrimary: {
 				color: 'var(--light-text-base)',
 				'&$selected': {

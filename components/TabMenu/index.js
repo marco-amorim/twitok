@@ -6,6 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import { Home } from '@material-ui/icons/';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { TabButton } from './styles';
 
 const useStyles = makeStyles({
 	root: {
@@ -13,24 +14,6 @@ const useStyles = makeStyles({
 		maxWidth: 'fit-content',
 		display: 'flex',
 		justifyContent: 'space-between',
-	},
-
-	tab: {
-		textTransform: 'none',
-		position: 'relative',
-		margin: '0px 15px',
-		fontWeight: 'bold',
-	},
-
-	link: {
-		position: 'absolute',
-		top: '0px',
-		bottom: '0px',
-		left: '0px',
-		right: '0px',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
 	},
 
 	linkSelectedColor: {
@@ -48,7 +31,7 @@ export default function TabMenu() {
 	};
 
 	return (
-		<Paper className={classes.root}>
+		<Paper>
 			<Tabs
 				value={value}
 				onChange={handleChange}
@@ -59,48 +42,43 @@ export default function TabMenu() {
 				<Tab
 					label={
 						<Link href="/">
-							<div
-								className={`${classes.link} ${
-									value === '/' && classes.linkSelectedColor
-								}`}
+							<TabButton
+								className={`${value === '/' && classes.linkSelectedColor}`}
 							>
 								<Home />
-							</div>
+							</TabButton>
 						</Link>
 					}
-					className={classes.tab}
 					disableRipple
 					value="/"
 				/>
 				<Tab
 					label={
 						<Link href="/timeline">
-							<div
-								className={`${classes.link} ${
+							<TabButton
+								className={`${
 									value === '/timeline' && classes.linkSelectedColor
 								}`}
 							>
 								Timeline
-							</div>
+							</TabButton>
 						</Link>
 					}
-					className={classes.tab}
 					disableRipple
 					value="/timeline"
 				/>
 				<Tab
 					label={
 						<Link href="/topclips">
-							<div
-								className={`${classes.link} ${
+							<TabButton
+								className={`${
 									value === '/topclips' && classes.linkSelectedColor
 								}`}
 							>
 								Top Clips
-							</div>
+							</TabButton>
 						</Link>
 					}
-					className={classes.tab}
 					disableRipple
 					value="/topclips"
 				/>
