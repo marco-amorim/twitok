@@ -45,7 +45,7 @@ export default function TabMenu() {
 							<TabButton
 								className={`${value === '/' && classes.linkSelectedColor}`}
 							>
-								<Home />
+								Home
 							</TabButton>
 						</Link>
 					}
