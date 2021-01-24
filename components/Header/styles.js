@@ -34,8 +34,6 @@ export const HeaderLogin = styled.button`
 	color: var(--white);
 	cursor: pointer;
 	transition: background-color 0.2s;
-	height: 40px;
-	width: 80px;
 
 	&:hover {
 		color: var(--white);
