@@ -1,15 +1,15 @@
 import React from 'react';
 
-import LandingImg from '../assets/images/LandingImg';
-
 import { PageContainer } from '../assets/styles/PageContainer';
 import { PageTitle } from '../assets/styles/PageTitle';
+
+import landingImg from '../assets/images/landing.svg';
 
 const Landing = () => {
 	return (
 		<PageContainer>
 			<PageTitle>Moments to remember</PageTitle>
-			<LandingImg height="275px" width="300px" />
+			<img src={landingImg} alt="Landing" />
 		</PageContainer>
 	);
 };
