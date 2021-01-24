@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { Link, useLocation } from 'react-router-dom';
 import { Home } from '@material-ui/icons/';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const useStyles = makeStyles({
 	root: {
@@ -39,8 +40,8 @@ const useStyles = makeStyles({
 
 export default function TabMenu() {
 	const classes = useStyles();
-	const { pathname } = useLocation();
-	const [value, setValue] = React.useState(pathname);
+	const router = useRouter();
+	const [value, setValue] = useState(router.pathname);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -57,13 +58,14 @@ export default function TabMenu() {
 			>
 				<Tab
 					label={
-						<Link
-							to="/"
-							className={`${classes.link} ${
-								value === '/' && classes.linkSelectedColor
-							}`}
-						>
-							<Home />
+						<Link href="/">
+							<div
+								className={`${classes.link} ${
+									value === '/' && classes.linkSelectedColor
+								}`}
+							>
+								<Home />
+							</div>
 						</Link>
 					}
 					className={classes.tab}
@@ -72,13 +74,14 @@ export default function TabMenu() {
 				/>
 				<Tab
 					label={
-						<Link
-							to="/timeline"
-							className={`${classes.link} ${
-								value === '/timeline' && classes.linkSelectedColor
-							}`}
-						>
-							Timeline
+						<Link href="/timeline">
+							<div
+								className={`${classes.link} ${
+									value === '/timeline' && classes.linkSelectedColor
+								}`}
+							>
+								Timeline
+							</div>
 						</Link>
 					}
 					className={classes.tab}
@@ -87,13 +90,14 @@ export default function TabMenu() {
 				/>
 				<Tab
 					label={
-						<Link
-							to="/topclips"
-							className={`${classes.link} ${
-								value === '/topclips' && classes.linkSelectedColor
-							}`}
-						>
-							Top Clips
+						<Link href="/topclips">
+							<div
+								className={`${classes.link} ${
+									value === '/topclips' && classes.linkSelectedColor
+								}`}
+							>
+								Top Clips
+							</div>
 						</Link>
 					}
 					className={classes.tab}
