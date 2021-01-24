@@ -37,7 +37,6 @@ class MyDocument extends Document {
 		return (
 			<Html lang="en" dir="ltr">
 				<Head>
-					<title>Twitok</title>
 					<meta charSet="utf-8" />
 				</Head>
 				<body>
