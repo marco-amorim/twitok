@@ -6,6 +6,10 @@ import { PageTitle } from '../styles/PageTitle';
 
 const Landing = () => {
 	const [session, loading] = useSession();
+	if (session) {
+		console.log(session);
+	}
+
 	return (
 		<PageContainer>
 			<PageTitle>Moments to remember</PageTitle>
