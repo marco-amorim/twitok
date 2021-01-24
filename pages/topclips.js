@@ -1,6 +1,6 @@
 import React from 'react';
-import { PageContainer } from '../assets/styles/PageContainer';
-import { PageTitle } from '../assets/styles/PageTitle';
+import { PageContainer } from '../styles/PageContainer';
+import { PageTitle } from '../styles/PageTitle';
 
 const TopClips = () => {
 	return (

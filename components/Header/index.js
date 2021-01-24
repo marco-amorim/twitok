@@ -2,13 +2,12 @@ import React from 'react';
 import TabMenu from '../TabMenu';
 import { HeaderContainer, HeaderLogin, HeaderLogo } from './styles';
 import LoadingSpinner from '../LoadingSpinner';
-import logoLight from '../../assets/images/logo-light.svg';
 
 const Header = () => {
 	return (
 		<>
 			<HeaderLogo>
-				<img src={logoLight} alt="Logo" />
+				<img src="/images/logo-light.svg" alt="Logo" />
 			</HeaderLogo>
 			<HeaderContainer>
 				<HeaderLogin disabled={true} style={{ pointerEvents: 'none' }}>

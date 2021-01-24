@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../components/Header';
-import GlobalStyle from '../assets/styles/GlobalStyle';
+import GlobalStyle from '../styles/GlobalStyle';
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { MuiTheme } from '../assets/styles/MuiTheme';
+import { MuiTheme } from '../styles/MuiTheme';
 
 function App({ Component, pageProps }) {
 	useEffect(() => {
