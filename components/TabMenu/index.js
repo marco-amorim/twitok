@@ -6,6 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { TabButton } from './styles';
+import { Home } from '@material-ui/icons';
 
 const useStyles = makeStyles({
 	root: {
@@ -44,7 +45,7 @@ export default function TabMenu() {
 							<TabButton
 								className={`${value === '/' && classes.linkSelectedColor}`}
 							>
-								Home
+								<Home />
 							</TabButton>
 						</Link>
 					}

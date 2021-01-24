@@ -1,5 +1,5 @@
 import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { ServerStyleSheets } from '@material-ui/styles';
 
@@ -35,17 +35,16 @@ class MyDocument extends Document {
 
 	render() {
 		return (
-			<html lang="en" dir="ltr">
+			<Html lang="en" dir="ltr">
 				<Head>
-					<meta charSet="utf-8" />
-
 					<title>Twitok</title>
+					<meta charSet="utf-8" />
 				</Head>
 				<body>
 					<Main />
 					<NextScript />
 				</body>
-			</html>
+			</Html>
 		);
 	}
 }
