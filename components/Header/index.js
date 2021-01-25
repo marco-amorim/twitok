@@ -1,11 +1,13 @@
 import React from 'react';
-import TabMenu from '../TabMenu';
-import { HeaderContainer, HeaderLogin, HeaderLogo } from './styles';
-import LoadingSpinner from '../LoadingSpinner';
+import { HeaderContainer, HeaderLogin, HeaderTitle } from './styles';
 import { signIn, signOut, useSession } from 'next-auth/client';
+import TabMenu from '../TabMenu';
+import LoadingSpinner from '../LoadingSpinner';
 
 const Header = () => {
 	const [session, loading] = useSession();
+
+	if (session) console.log(session);
 
 	const renderLoginOptions = () => {
 		if (session) {
@@ -17,9 +19,11 @@ const Header = () => {
 
 	return (
 		<>
-			<HeaderLogo>
-				<img src="/images/logo-light.svg" alt="Logo" />
-			</HeaderLogo>
+			<HeaderTitle>
+				<h1>
+					Twi<span>tok</span>
+				</h1>
+			</HeaderTitle>
 			<HeaderContainer>
 				{loading ? (
 					<HeaderLogin disabled={true} style={{ pointerEvents: 'none' }}>

@@ -12,10 +12,13 @@ export const HeaderContainer = styled.nav`
 	}
 `;
 
-export const HeaderLogo = styled.div`
+export const HeaderTitle = styled.h2`
 	display: flex;
 	justify-content: center;
-	margin: 20px 0px;
+	color: var(--purple-default);
+	span {
+		color: var(--light-text-base);
+	}
 `;
 
 export const HeaderLogin = styled.button`
