@@ -20,9 +20,7 @@ const Header = () => {
 	return (
 		<>
 			<HeaderTitle>
-				<h1>
-					Twi<span>tok</span>
-				</h1>
+				Twi<span>tok</span>
 			</HeaderTitle>
 			<HeaderContainer>
 				{loading ? (

@@ -12,10 +12,11 @@ export const HeaderContainer = styled.nav`
 	}
 `;
 
-export const HeaderTitle = styled.h2`
+export const HeaderTitle = styled.h1`
 	display: flex;
 	justify-content: center;
 	color: var(--purple-default);
+
 	span {
 		color: var(--light-text-base);
 	}
