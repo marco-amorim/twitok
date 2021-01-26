@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
@@ -24,7 +24,11 @@ const useStyles = makeStyles({
 export default function TabMenu() {
 	const classes = useStyles();
 	const router = useRouter();
-	const [value, setValue] = useState(router.pathname);
+	const pathname = router.pathname;
+	const possibleValues = ['/', '/timeline', '/topclips'];
+	const [value, setValue] = useState(
+		possibleValues.includes(pathname) ? pathname : false
+	);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
