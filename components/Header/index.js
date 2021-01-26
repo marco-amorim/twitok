@@ -7,8 +7,6 @@ import LoadingSpinner from '../LoadingSpinner';
 const Header = () => {
 	const [session, loading] = useSession();
 
-	if (session) console.log(session);
-
 	const renderLoginOptions = () => {
 		if (session) {
 			return <HeaderLogin onClick={signOut}>Sign out</HeaderLogin>;
