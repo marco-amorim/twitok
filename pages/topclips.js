@@ -14,15 +14,16 @@ const TopClips = () => {
 		const response = await axios.get('/api/token/twitch');
 		const { access_token } = response.data;
 
-		const clips = await axios.get(
-			'https://api.twitch.tv/helix/clips?game_id=509658',
-			{
-				headers: {
-					'client-id': process.env.TWITCH_CLIENT_ID,
-					Authorization: 'Bearer ' + access_token,
-				},
-			}
-		);
+		const clips = await axios.get('https://api.twitch.tv/helix/clips', {
+			headers: {
+				'client-id': process.env.TWITCH_CLIENT_ID,
+				Authorization: 'Bearer ' + access_token,
+			},
+			params: {
+				game_id: '509658',
+				first: '5',
+			},
+		});
 
 		const { data } = clips.data;
 
@@ -39,7 +40,7 @@ const TopClips = () => {
 					<iframe
 						key={index}
 						src={`${clip.embed_url}&parent=localhost`}
-						allowfullscreen="true"
+						allowFullScreen="true"
 						width="500px"
 						height="400px"
 					/>
