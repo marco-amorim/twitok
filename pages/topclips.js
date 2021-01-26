@@ -1,15 +1,14 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PageContainer } from '../styles/PageContainer';
 import { PageTitle } from '../styles/PageTitle';
-import { useSession } from 'next-auth/client';
 
 const TopClips = () => {
-	const [session, loading] = useSession();
+	const [clips, setClips] = useState([]);
 
 	useEffect(() => {
 		fetchTopClips();
-	});
+	}, []);
 
 	const fetchTopClips = async () => {
 		const response = await axios.get('/api/token/twitch');
@@ -25,12 +24,27 @@ const TopClips = () => {
 			}
 		);
 
-		console.log(clips);
+		const { data } = clips.data;
+
+		setClips(data);
+
+		console.log(data);
 	};
 
 	return (
 		<PageContainer>
 			<PageTitle>Top Clips</PageTitle>
+			{clips.map((clip, index) => {
+				return (
+					<iframe
+						key={index}
+						src={`${clip.embed_url}&parent=localhost`}
+						allowfullscreen="true"
+						width="500px"
+						height="400px"
+					/>
+				);
+			})}
 		</PageContainer>
 	);
 };
