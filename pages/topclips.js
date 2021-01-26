@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import ClipCard from '../components/ClipCard';
 import { PageContainer } from '../styles/PageContainer';
 import { PageTitle } from '../styles/PageTitle';
 
@@ -36,15 +37,7 @@ const TopClips = () => {
 		<PageContainer>
 			<PageTitle>Top Clips</PageTitle>
 			{clips.map((clip, index) => {
-				return (
-					<iframe
-						key={index}
-						src={`${clip.embed_url}&parent=localhost`}
-						allowFullScreen={true}
-						width="500px"
-						height="400px"
-					/>
-				);
+				return <ClipCard embedUrl={`${clip.embed_url}&parent=localhost`} />;
 			})}
 		</PageContainer>
 	);
