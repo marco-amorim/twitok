@@ -40,7 +40,7 @@ const TopClips = () => {
 					<iframe
 						key={index}
 						src={`${clip.embed_url}&parent=localhost`}
-						allowFullScreen="true"
+						allowFullScreen={true}
 						width="500px"
 						height="400px"
 					/>

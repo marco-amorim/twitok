@@ -1,26 +1,32 @@
 import React from 'react';
-import { HeaderContainer, HeaderLogin, HeaderTitle } from './styles';
-import { signIn, signOut, useSession } from 'next-auth/client';
+import {
+	HeaderLogin,
+	HeaderTitle,
+	HeaderMenu,
+	HeaderContainer,
+} from './styles';
+import { signIn, useSession } from 'next-auth/client';
 import TabMenu from '../TabMenu';
 import LoadingSpinner from '../LoadingSpinner';
+import UserMenu from '../UserMenu';
 
 const Header = () => {
 	const [session, loading] = useSession();
 
 	const renderLoginOptions = () => {
 		if (session) {
-			return <HeaderLogin onClick={signOut}>Sign out</HeaderLogin>;
+			return <UserMenu userPhoto={session.user.image} />;
 		}
 
-		return <HeaderLogin onClick={signIn}>Sign in</HeaderLogin>;
+		return <HeaderLogin onClick={signIn}>Sign In</HeaderLogin>;
 	};
 
 	return (
-		<>
+		<HeaderContainer>
 			<HeaderTitle>
 				Twi<span>tok</span>
 			</HeaderTitle>
-			<HeaderContainer>
+			<HeaderMenu>
 				{loading ? (
 					<HeaderLogin disabled={true} style={{ pointerEvents: 'none' }}>
 						<LoadingSpinner height="25px" width="25px" />
@@ -30,8 +36,8 @@ const Header = () => {
 				)}
 
 				<TabMenu />
-			</HeaderContainer>
-		</>
+			</HeaderMenu>
+		</HeaderContainer>
 	);
 };
 

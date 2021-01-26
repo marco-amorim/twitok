@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.nav`
+export const HeaderMenu = styled.nav`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -9,6 +9,7 @@ export const HeaderContainer = styled.nav`
 
 	@media (max-width: 767px) {
 		flex-direction: column;
+		margin: 0px;
 	}
 `;
 
@@ -20,6 +21,10 @@ export const HeaderTitle = styled.h1`
 	span {
 		color: var(--light-text-base);
 	}
+
+	@media (max-width: 767px) {
+		margin: 10px 0px;
+	}
 `;
 
 export const HeaderLogin = styled.button`
@@ -27,8 +32,8 @@ export const HeaderLogin = styled.button`
 	justify-content: center;
 	align-items: center;
 	position: absolute;
-	top: 15px;
-	right: 15px;
+	top: 0px;
+	right: 0px;
 	padding: 10px 15px 10px 15px;
 	border: none;
 	border-radius: 5px;
@@ -38,9 +43,19 @@ export const HeaderLogin = styled.button`
 	color: var(--white);
 	cursor: pointer;
 	transition: background-color 0.2s;
+	height: 45px;
 
 	&:hover {
 		color: var(--white);
 		background-color: var(--bg-button-hover);
 	}
+
+	@media (max-width: 767px) {
+		position: unset;
+		margin-bottom: 15px;
+	}
+`;
+
+export const HeaderContainer = styled.div`
+	position: relative;
 `;

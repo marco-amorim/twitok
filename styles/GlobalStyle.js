@@ -16,7 +16,6 @@ const GlobalStyle = createGlobalStyle`
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    position: relative;
 
     @media (min-width: 576px) {
       max-width: 540px;

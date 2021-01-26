@@ -21,5 +21,13 @@ export const MuiTheme = createMuiTheme({
 				backgroundColor: 'var(--purple-default)',
 			},
 		},
+
+		MuiButton: {
+			root: {
+				'&:hover': {
+					backgroundColor: 'none',
+				},
+			},
+		},
 	},
 });
