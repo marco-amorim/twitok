@@ -15,6 +15,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Comment } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -33,37 +34,16 @@ const useStyles = makeStyles((theme) => ({
 			height: 185,
 		},
 	},
-	expand: {
-		transform: 'rotate(0deg)',
-		marginLeft: 'auto',
-		transition: theme.transitions.create('transform', {
-			duration: theme.transitions.duration.shortest,
-		}),
-	},
-	expandOpen: {
-		transform: 'rotate(180deg)',
-	},
-	avatar: {
-		backgroundColor: red[500],
-	},
 }));
 
 const ClipCard = ({ embedUrl }) => {
 	const classes = useStyles();
 	const [expanded, setExpanded] = React.useState(false);
 
-	const handleExpandClick = () => {
-		setExpanded(!expanded);
-	};
-
 	return (
 		<Card className={classes.root}>
 			<CardHeader
-				avatar={
-					<Avatar aria-label="recipe" className={classes.avatar}>
-						R
-					</Avatar>
-				}
+				avatar={<Avatar aria-label="avatar">A</Avatar>}
 				action={
 					<IconButton aria-label="settings">
 						<MoreVertIcon />
@@ -83,18 +63,8 @@ const ClipCard = ({ embedUrl }) => {
 				<IconButton aria-label="add to favorites">
 					<FavoriteIcon />
 				</IconButton>
-				<IconButton aria-label="share">
-					<ShareIcon />
-				</IconButton>
-				<IconButton
-					className={clsx(classes.expand, {
-						[classes.expandOpen]: expanded,
-					})}
-					onClick={handleExpandClick}
-					aria-expanded={expanded}
-					aria-label="show more"
-				>
-					<ExpandMoreIcon />
+				<IconButton aria-label="comment">
+					<Comment />
 				</IconButton>
 			</CardActions>
 		</Card>

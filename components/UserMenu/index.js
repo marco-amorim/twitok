@@ -35,8 +35,8 @@ const UserMenu = ({ userPhoto }) => {
 		}
 	}
 
-	const navigateToMyClips = (event) => {
-		router.push('/myclips');
+	const navigateTo = (event, route) => {
+		router.push(route);
 		handleClose(event);
 	};
 
@@ -92,7 +92,16 @@ const UserMenu = ({ userPhoto }) => {
 										id="menu-list-grow"
 										onKeyDown={handleListKeyDown}
 									>
-										<MenuItem onClick={navigateToMyClips}>My Clips</MenuItem>
+										<MenuItem
+											onClick={(event) => navigateTo(event, '/newclip')}
+										>
+											New Clip
+										</MenuItem>
+										<MenuItem
+											onClick={(event) => navigateTo(event, '/myclips')}
+										>
+											My Clips
+										</MenuItem>
 										<MenuItem onClick={navigateToSourceCode}>
 											Source Code
 										</MenuItem>
