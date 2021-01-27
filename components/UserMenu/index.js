@@ -75,7 +75,7 @@ const UserMenu = ({ userPhoto }) => {
 					role={undefined}
 					transition
 					disablePortal
-					placement="left-start"
+					placement="bottom"
 				>
 					{({ TransitionProps, placement }) => (
 						<Grow

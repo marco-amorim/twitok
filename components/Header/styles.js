@@ -17,7 +17,7 @@ export const HeaderTitle = styled.h1`
 	display: flex;
 	justify-content: center;
 	color: var(--purple-default);
-	margin: 30px 0px;
+	margin: 10px 0px;
 	font-size: 40px;
 
 	span {
@@ -49,7 +49,8 @@ export const HeaderLogin = styled.button`
 	}
 
 	@media (max-width: 767px) {
-		/* right: 30px; */
+		position: unset;
+		margin-bottom: 15px;
 	}
 `;
 
