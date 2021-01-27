@@ -67,8 +67,8 @@ const UserMenu = ({ userPhoto }) => {
 					disableTouchRipple
 					disableElevation
 				>
-					<UserMenuImg src={userPhoto} alt="" />
-					{open ? <ArrowDropUp /> : <ArrowDropDown />}
+					<ArrowDropDown />
+					<UserMenuImg src={userPhoto} alt="photo" />
 				</Button>
 				<Popper
 					open={open}

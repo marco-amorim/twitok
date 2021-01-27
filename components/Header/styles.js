@@ -17,13 +17,9 @@ export const HeaderTitle = styled.h1`
 	display: flex;
 	justify-content: center;
 	color: var(--purple-default);
-
+	margin: 30px 0px;
 	span {
 		color: var(--light-text-base);
-	}
-
-	@media (max-width: 767px) {
-		margin: 10px 0px;
 	}
 `;
 
