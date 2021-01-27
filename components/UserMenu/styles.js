@@ -12,7 +12,7 @@ export const UserMenuContainer = styled.div`
 	outline: none;
 
 	@media (max-width: 767px) {
-		right: 30px;
+		/* right: 0px; */
 	}
 `;
 

@@ -49,7 +49,7 @@ export const HeaderLogin = styled.button`
 	}
 
 	@media (max-width: 767px) {
-		right: 30px;
+		/* right: 30px; */
 	}
 `;
 

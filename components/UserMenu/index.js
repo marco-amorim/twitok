@@ -62,10 +62,9 @@ const UserMenu = ({ userPhoto }) => {
 					aria-controls={open ? 'menu-list-grow' : undefined}
 					aria-haspopup="true"
 					onClick={handleToggle}
-					disableRipple={true}
+					disableRipple
 					disableFocusRipple
 					disableTouchRipple
-					disableElevation
 				>
 					<ArrowDropDown />
 					<UserMenuImg src={userPhoto} alt="photo" />
@@ -76,7 +75,7 @@ const UserMenu = ({ userPhoto }) => {
 					role={undefined}
 					transition
 					disablePortal
-					placement="bottom"
+					placement="left-start"
 				>
 					{({ TransitionProps, placement }) => (
 						<Grow
