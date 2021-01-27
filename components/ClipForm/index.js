@@ -1,6 +1,7 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Field, ErrorMessage } from 'formik';
 import { TextField } from '@material-ui/core';
+import { FormButton, FormContainer } from './styles';
 
 const ClipForm = () => {
 	const initialValues = {
@@ -13,10 +14,19 @@ const ClipForm = () => {
 
 	return (
 		<Formik onSubmit={handleSubmit} initialValues={initialValues}>
-			<Form>
-				<Field as={TextField} name="clipUrl" />
-				<button type="submit">submit</button>
-			</Form>
+			<FormContainer>
+				<Field
+					required={true}
+					as={TextField}
+					autoComplete="off"
+					label="Clip URL"
+					name="clipUrl"
+					fullWidth
+					type="text"
+					helperText={<ErrorMessage name="clipUrl" />}
+				/>
+				<FormButton type="submit">Submit</FormButton>
+			</FormContainer>
 		</Formik>
 	);
 };

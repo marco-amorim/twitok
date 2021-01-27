@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     --purple-default: #9147ff;
     --white: #FFFFFF;
     --bg-button-hover: #772ce8;
+    --error: #f44336;
 
     --dark-text-base: #efeff1;
     

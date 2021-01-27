@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { buttonStyles } from '../../styles/buttonStyles';
 
 export const HeaderMenu = styled.nav`
 	display: flex;
@@ -26,27 +27,10 @@ export const HeaderTitle = styled.h1`
 `;
 
 export const HeaderLogin = styled.button`
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	${buttonStyles}
 	position: absolute;
 	top: 0px;
 	right: 0px;
-	padding: 10px 15px 10px 15px;
-	border: none;
-	border-radius: 5px;
-	outline: none;
-	background-color: var(--purple-default);
-	font-size: 1rem;
-	color: var(--white);
-	cursor: pointer;
-	transition: background-color 0.2s;
-	height: 45px;
-
-	&:hover {
-		color: var(--white);
-		background-color: var(--bg-button-hover);
-	}
 
 	@media (max-width: 767px) {
 		position: unset;

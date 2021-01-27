@@ -29,5 +29,45 @@ export const MuiTheme = createMuiTheme({
 				},
 			},
 		},
+		MuiFormHelperText: {
+			root: {
+				color: 'var(--error)',
+				fontFamily: 'Roboto',
+			},
+		},
+		MuiInput: {
+			underline: {
+				'&:before': {
+					borderBottom: '2px solid var(--light-text-base)',
+				},
+
+				'&:after': {
+					borderBottom: '2px solid var(--purple-default)',
+				},
+
+				'&:hover:not(.Mui-disabled):before': {
+					borderBottom: '2px solid var(--light-text-base)',
+				},
+			},
+
+			formControl: {
+				margin: '15px 0px',
+			},
+		},
+		MuiFormLabel: {
+			root: {
+				color: 'var(--light-text-base)',
+				fontSize: '1rem',
+				fontFamily: 'Roboto',
+				'&$focused': {
+					color: 'var(--purple-default)',
+				},
+			},
+		},
+		MuiInputBase: {
+			input: {
+				color: 'var(--light-text-base)',
+			},
+		},
 	},
 });
