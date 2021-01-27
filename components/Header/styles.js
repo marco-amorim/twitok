@@ -17,7 +17,7 @@ export const HeaderTitle = styled.h1`
 	display: flex;
 	justify-content: center;
 	color: var(--purple-default);
-	margin: 10px 0px;
+	margin: 15px 0px;
 	font-size: 40px;
 
 	span {

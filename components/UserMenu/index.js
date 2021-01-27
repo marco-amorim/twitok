@@ -7,14 +7,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Button from '@material-ui/core/Button';
 import { UserMenuContainer, UserMenuImg } from './styles';
-import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons';
+import { ArrowDropDown } from '@material-ui/icons';
 import { signOut } from 'next-auth/client';
-import { useRouter } from 'next/router';
 
 const UserMenu = ({ userPhoto }) => {
 	const [open, setOpen] = React.useState(false);
 	const anchorRef = React.useRef(null);
-	const router = useRouter();
 
 	const handleToggle = () => {
 		setOpen((prevOpen) => !prevOpen);
@@ -36,7 +34,7 @@ const UserMenu = ({ userPhoto }) => {
 	}
 
 	const navigateTo = (event, route) => {
-		router.push(route);
+		window.location.href = route;
 		handleClose(event);
 	};
 
