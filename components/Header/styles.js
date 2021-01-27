@@ -18,6 +18,8 @@ export const HeaderTitle = styled.h1`
 	justify-content: center;
 	color: var(--purple-default);
 	margin: 30px 0px;
+	font-size: 40px;
+
 	span {
 		color: var(--light-text-base);
 	}
