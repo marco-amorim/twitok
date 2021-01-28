@@ -3,15 +3,21 @@ import { Formik, Field, ErrorMessage } from 'formik';
 import TextField from '@material-ui/core/TextField';
 import { FormButton, FormContainer } from './styles';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const ClipForm = ({ userId }) => {
+	const router = useRouter();
+
 	const initialValues = {
 		clipId: '',
 	};
 
 	const handleSubmit = (values, actions) => {
-		const newClip = { ...values, userId: userId };
+		const newClip = { ...values, userId };
 		axios.post('/api/clips/create', newClip);
+
+		actions.resetForm();
+		router.push('/newclips');
 	};
 
 	return (
