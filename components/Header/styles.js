@@ -20,6 +20,7 @@ export const HeaderTitle = styled.h1`
 	color: var(--purple-default);
 	margin: 15px 0px;
 	font-size: 40px;
+	user-select: none;
 
 	span {
 		color: var(--light-text-base);
