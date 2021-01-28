@@ -23,8 +23,8 @@ function App({ Component, pageProps }) {
 			</Head>
 			<GlobalStyle />
 			<ThemeProvider theme={MuiTheme}>
-				<Header />
 				<Provider session={pageProps.session}>
+					<Header />
 					<Component {...pageProps} />
 				</Provider>
 			</ThemeProvider>

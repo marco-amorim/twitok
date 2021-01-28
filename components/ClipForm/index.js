@@ -1,15 +1,17 @@
 import React from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
-import { TextField } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 import { FormButton, FormContainer } from './styles';
+import axios from 'axios';
 
-const ClipForm = () => {
+const ClipForm = ({ userId }) => {
 	const initialValues = {
-		clipUrl: '',
+		clipId: '',
 	};
 
 	const handleSubmit = (values, actions) => {
-		console.log(values);
+		const newClip = { ...values, userId: userId };
+		axios.post('/api/clips/create', newClip);
 	};
 
 	return (
@@ -19,11 +21,11 @@ const ClipForm = () => {
 					required={true}
 					as={TextField}
 					autoComplete="off"
-					label="Clip URL"
-					name="clipUrl"
+					label="Clip ID"
+					name="clipId"
 					fullWidth
 					type="text"
-					helperText={<ErrorMessage name="clipUrl" />}
+					helperText={<ErrorMessage name="clipId" />}
 				/>
 				<FormButton type="submit">Submit</FormButton>
 			</FormContainer>

@@ -29,7 +29,7 @@ const Header = () => {
 			<HeaderMenu>
 				{loading ? (
 					<HeaderLogin disabled={true} style={{ pointerEvents: 'none' }}>
-						<LoadingSpinner height="25px" width="25px" />
+						<LoadingSpinner height="25px" width="25px" color="var(--white)" />
 					</HeaderLogin>
 				) : (
 					renderLoginOptions()
