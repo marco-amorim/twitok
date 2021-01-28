@@ -14,7 +14,7 @@
 - MongoDB
 - Material-UI
 - Styled-Components
-- You can check all the libraries used [here](https://github.com/marco-amorim/drawhub/network/dependencies)
+- You can check all the libraries used [here](https://github.com/marco-amorim/twitok/network/dependencies)
 
 ## Functionalities
 
