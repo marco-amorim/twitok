@@ -2,12 +2,12 @@ import React from 'react';
 import { PageContainer } from '../styles/PageContainer';
 import { PageTitle } from '../styles/PageTitle';
 
-const Timeline = () => {
+const NewClips = () => {
 	return (
 		<PageContainer>
-			<PageTitle>Timeline</PageTitle>
+			<PageTitle>New Clips</PageTitle>
 		</PageContainer>
 	);
 };
 
-export default Timeline;
+export default NewClips;

@@ -58,18 +58,18 @@ export default function TabMenu() {
 				/>
 				<Tab
 					label={
-						<Link href="/timeline">
+						<Link href="/newclips">
 							<TabButton
 								className={`${
-									value === '/timeline' && classes.linkSelectedColor
+									value === '/newclips' && classes.linkSelectedColor
 								}`}
 							>
-								Timeline
+								New Clips
 							</TabButton>
 						</Link>
 					}
 					disableRipple
-					value="/timeline"
+					value="/newclips"
 				/>
 				<Tab
 					label={
