@@ -20,6 +20,10 @@
 
 - SSO with Twitch / Google / Github
 
+  <br />
+  <br />
+  <br />
+
 <div style="text-align:center;">
   <img src="https://raw.githubusercontent.com/marco-amorim/twitok/master/public/images/readme.svg">
 </div>
