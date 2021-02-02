@@ -21,9 +21,11 @@ export const HeaderTitle = styled.h1`
 	margin: 15px 0px;
 	font-size: 40px;
 	user-select: none;
+	font-weight: 500;
 
 	span {
 		color: var(--light-text-base);
+		font-weight: 300;
 	}
 `;
 
