@@ -10,7 +10,7 @@ const NewClip = () => {
 
 	const renderForm = () => {
 		if (session) {
-			return <ClipForm userId={session.user.id} />;
+			return <ClipForm user={session.user} />;
 		}
 
 		return <h2>You need to be logged in for this :/</h2>;

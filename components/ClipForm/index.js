@@ -5,7 +5,7 @@ import { FormButton, FormContainer } from './styles';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-const ClipForm = ({ userId }) => {
+const ClipForm = ({ user }) => {
 	const router = useRouter();
 
 	const initialValues = {
@@ -13,7 +13,7 @@ const ClipForm = ({ userId }) => {
 	};
 
 	const handleSubmit = (values, actions) => {
-		const newClip = { ...values, userId };
+		const newClip = { ...values, user };
 		axios.post('/api/clips/create', newClip);
 
 		actions.resetForm();
