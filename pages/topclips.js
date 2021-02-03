@@ -21,8 +21,7 @@ const TopClips = () => {
 				Authorization: 'Bearer ' + access_token,
 			},
 			params: {
-				game_id: '509658',
-				first: '5',
+				id: 'TallCuteChamoisSquadGoals',
 			},
 		});
 
@@ -37,7 +36,14 @@ const TopClips = () => {
 		<PageContainer>
 			<PageTitle>Top Clips</PageTitle>
 			{clips.map((clip, index) => {
-				return <ClipCard embedUrl={`${clip.embed_url}&parent=localhost`} />;
+				return (
+					<ClipCard
+						key={index}
+						embedUrl={`${clip.embed_url}&parent=localhost`}
+						title={clip.title}
+						creatorName={clip.creator_name}
+					/>
+				);
 			})}
 		</PageContainer>
 	);

@@ -5,9 +5,12 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Comment } from '@material-ui/icons';
+import {
+	CommentOutlined,
+	ThumbDownOutlined,
+	ThumbUpOutlined,
+} from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -26,9 +29,12 @@ const useStyles = makeStyles((theme) => ({
 			height: 185,
 		},
 	},
+	rightIcons: {
+		marginLeft: 'auto',
+	},
 }));
 
-const ClipCard = ({ embedUrl }) => {
+const ClipCard = ({ embedUrl, title, creatorName }) => {
 	const classes = useStyles();
 
 	return (
@@ -40,8 +46,8 @@ const ClipCard = ({ embedUrl }) => {
 						<MoreVertIcon />
 					</IconButton>
 				}
-				title="Shrimp and Chorizo Paella"
-				subheader="September 14, 2016"
+				title={title}
+				subheader={`Created by: ${creatorName}`}
 			/>
 
 			<iframe
@@ -51,11 +57,16 @@ const ClipCard = ({ embedUrl }) => {
 			/>
 
 			<CardActions disableSpacing>
-				<IconButton aria-label="add to favorites">
-					<FavoriteIcon />
+				<IconButton aria-label="like">
+					<ThumbUpOutlined />
 				</IconButton>
-				<IconButton aria-label="comment">
-					<Comment />
+				0
+				<IconButton aria-label="dislike">
+					<ThumbDownOutlined />
+				</IconButton>
+				0
+				<IconButton aria-label="comment" className={classes.rightIcons}>
+					<CommentOutlined />
 				</IconButton>
 			</CardActions>
 		</Card>
