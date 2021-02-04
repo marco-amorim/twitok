@@ -18,7 +18,7 @@ const NewClip = () => {
 
 	return (
 		<PageContainer>
-			<PageTitle>New Clip</PageTitle>
+			<PageTitle>Share Clip</PageTitle>
 			{loading ? (
 				<LoadingSpinner
 					width="50px"
