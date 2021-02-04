@@ -4,7 +4,7 @@
 
 ## Production
 
-- https://twitok.marcoamorim.com/
+- https://twitok.marcoamorim.com
 
 ## Technologies
 
@@ -19,6 +19,7 @@
 ## Functionalities
 
 - SSO with Twitch / Google / Github
+- Share Twitch Clips
 
   <br />
   <br />
