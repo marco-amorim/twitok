@@ -1,3 +1,4 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 
@@ -27,4 +28,5 @@ const options = {
 	database: process.env.DATABASE_URL,
 };
 
-export default (req, res) => NextAuth(req, res, options);
+export default (req: NextApiRequest, res: NextApiResponse) =>
+	NextAuth(req, res, options);

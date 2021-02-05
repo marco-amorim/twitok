@@ -1,6 +1,7 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import { connect } from '../../../utils/database';
 
-export default async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		const { db } = await connect();
 

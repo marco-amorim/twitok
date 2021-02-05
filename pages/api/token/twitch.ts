@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		const { data } = await axios.post(
 			`https://id.twitch.tv/oauth2/token`,
