@@ -7,5 +7,6 @@ module.exports = {
 		GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
 		NEXTAUTH_URL: process.env.NEXTAUTH_URL,
 		DATABASE_URL: process.env.DATABASE_URL,
+		DOMAIN: process.env.DOMAIN,
 	},
 };

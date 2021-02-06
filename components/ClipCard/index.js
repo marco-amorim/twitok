@@ -52,7 +52,7 @@ const ClipCard = ({ clipId, title, creatorName, userPhoto }) => {
 			/>
 
 			<iframe
-				src={`https://clips.twitch.tv/embed?clip=${clipId}&parent=localhost`}
+				src={`https://clips.twitch.tv/embed?clip=${clipId}&parent=${process.env.DOMAIN}`}
 				className={classes.iframe}
 				allowFullScreen={true}
 			/>
