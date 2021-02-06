@@ -69,5 +69,10 @@ export const MuiTheme = createMuiTheme({
 				color: 'var(--light-text-base)',
 			},
 		},
+		MuiCardHeader: {
+			title: {
+				fontSize: '16px',
+			},
+		},
 	},
 });
