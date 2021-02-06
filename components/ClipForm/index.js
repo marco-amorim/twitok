@@ -27,6 +27,17 @@ const ClipForm = ({ user }) => {
 					required={true}
 					as={TextField}
 					autoComplete="off"
+					label="Title"
+					name="title"
+					fullWidth
+					type="text"
+					helperText={<ErrorMessage name="title" />}
+				/>
+
+				<Field
+					required={true}
+					as={TextField}
+					autoComplete="off"
 					label="Clip ID"
 					name="clipId"
 					fullWidth

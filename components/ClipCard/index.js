@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const ClipCard = ({ embedUrl, title, creatorName }) => {
+const ClipCard = ({ clipId, title, creatorName }) => {
 	const classes = useStyles();
 
 	return (
@@ -48,11 +48,11 @@ const ClipCard = ({ embedUrl, title, creatorName }) => {
 					</IconButton>
 				}
 				title={title}
-				subheader={`Created by: ${creatorName}`}
+				subheader={`Posted by: ${creatorName}`}
 			/>
 
 			<iframe
-				src={embedUrl}
+				src={`https://clips.twitch.tv/embed?clip=${clipId}&parent=localhost`}
 				className={classes.iframe}
 				allowFullScreen={true}
 			/>

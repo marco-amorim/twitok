@@ -28,8 +28,6 @@ const TopClips = () => {
 		const { data } = clips.data;
 
 		setClips(data);
-
-		console.log(data);
 	};
 
 	return (
@@ -39,7 +37,7 @@ const TopClips = () => {
 				return (
 					<ClipCard
 						key={index}
-						embedUrl={`${clip.embed_url}&parent=localhost`}
+						clipId={clip.id}
 						title={clip.title}
 						creatorName={clip.creator_name}
 					/>

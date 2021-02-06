@@ -5,9 +5,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		const { db } = await connect();
 
-		const { clipId, user } = req.body;
+		const { clipId, title, user } = req.body;
 
 		const newClip = {
+			title,
 			clipId,
 			user,
 			likesCount: 0,

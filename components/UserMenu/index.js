@@ -88,7 +88,9 @@ const UserMenu = ({ userPhoto }) => {
 									id="menu-list-grow"
 									onKeyDown={handleListKeyDown}
 								>
-									<MenuItem onClick={(event) => navigateTo(event, '/shareclip')}>
+									<MenuItem
+										onClick={(event) => navigateTo(event, '/shareclip')}
+									>
 										Share Clip
 									</MenuItem>
 									<MenuItem onClick={(event) => navigateTo(event, '/myclips')}>
