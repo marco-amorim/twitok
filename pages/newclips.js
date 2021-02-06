@@ -8,11 +8,15 @@ const NewClips = () => {
 	const [clips, setClips] = useState([]);
 
 	const fetchClips = async () => {
-		const { data } = await axios.get('/api/clips');
+		try {
+			const { data } = await axios.get('/api/clips');
 
-		const { clips } = data;
+			const { clips } = data;
 
-		setClips(clips);
+			setClips(clips);
+		} catch (error) {
+			console.log('Unable to fetch clips, ' + error);
+		}
 	};
 
 	useState(() => {
