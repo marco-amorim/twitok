@@ -27,6 +27,7 @@ const NewClips = () => {
 					creatorName={clip.user.name}
 					title={clip.title}
 					clipId={clip.clipId}
+					userPhoto={clip.user.image}
 				/>
 			);
 		});

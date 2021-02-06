@@ -35,13 +35,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const ClipCard = ({ clipId, title, creatorName }) => {
+const ClipCard = ({ clipId, title, creatorName, userPhoto }) => {
 	const classes = useStyles();
 
 	return (
 		<Card className={classes.root}>
 			<CardHeader
-				avatar={<Avatar aria-label="avatar">A</Avatar>}
+				avatar={<Avatar src={userPhoto} aria-label="avatar" />}
 				action={
 					<IconButton aria-label="settings">
 						<MoreVertIcon />
