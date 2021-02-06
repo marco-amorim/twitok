@@ -25,7 +25,7 @@ export default function TabMenu() {
 	const classes = useStyles();
 	const router = useRouter();
 	const pathname = router.pathname;
-	const possibleValues = ['/', '/timeline', '/topclips'];
+	const possibleValues = ['/', '/newclips', '/topclips'];
 	const [value, setValue] = useState(
 		possibleValues.includes(pathname) ? pathname : false
 	);

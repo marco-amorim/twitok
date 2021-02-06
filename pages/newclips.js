@@ -17,7 +17,7 @@ const NewClips = () => {
 
 	useState(() => {
 		fetchClips();
-	}, [clips]);
+	}, []);
 
 	const renderClips = () => {
 		return clips.map((clip, index) => {
