@@ -39,7 +39,7 @@ const UserMenu = ({ userPhoto }) => {
 	};
 
 	const navigateToSourceCode = (event) => {
-		window.open('https://github.com/marco-amorim/drawhub', '_blank');
+		window.open('https://github.com/marco-amorim/twitok', '_blank');
 		handleClose(event);
 	};
 

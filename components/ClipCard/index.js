@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	rightIcons: {
 		marginLeft: 'auto',
+		marginRight: '12px',
 	},
 }));
 
@@ -65,9 +66,12 @@ const ClipCard = ({ embedUrl, title, creatorName }) => {
 					<ThumbDownOutlined />
 				</IconButton>
 				0
-				<IconButton aria-label="comment" className={classes.rightIcons}>
-					<CommentOutlined />
-				</IconButton>
+				<div className={classes.rightIcons}>
+					0
+					<IconButton aria-label="comment">
+						<CommentOutlined />
+					</IconButton>
+				</div>
 			</CardActions>
 		</Card>
 	);
