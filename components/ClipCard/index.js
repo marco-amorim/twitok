@@ -68,12 +68,37 @@ const ClipCard = ({
 					userId: currentUser.id,
 					clipId: mongoClipId,
 					isLiked: isLiked,
+					isDisliked: isDisliked,
 				});
 
 				isLiked && setLikes(likes - 1);
 				!isLiked && setLikes(likes + 1);
+				isDisliked && setDislikes(dislikes - 1);
 
 				setIsLiked(!isLiked);
+				setIsDisliked(false);
+			} catch (error) {
+				console.log(error);
+			}
+		}
+	};
+
+	const handleDislike = async () => {
+		if (currentUser) {
+			try {
+				await axios.put('/api/clips/dislike', {
+					userId: currentUser.id,
+					clipId: mongoClipId,
+					isDisliked: isDisliked,
+					isLiked: isLiked,
+				});
+
+				isDisliked && setDislikes(dislikes - 1);
+				!isDisliked && setDislikes(dislikes + 1);
+				isLiked && setLikes(likes - 1);
+
+				setIsDisliked(!isDisliked);
+				setIsLiked(false);
 			} catch (error) {
 				console.log(error);
 			}
@@ -104,7 +129,7 @@ const ClipCard = ({
 					{isLiked ? <ThumbUp /> : <ThumbUpOutlined />}
 				</IconButton>
 				{likes}
-				<IconButton aria-label="dislike">
+				<IconButton aria-label="dislike" onClick={handleDislike}>
 					{isDisliked ? <ThumbDown /> : <ThumbDownOutlined />}
 				</IconButton>
 				{dislikes}
