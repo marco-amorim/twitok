@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PageContainer } from '../styles/PageContainer';
 import { PageTitle } from '../styles/PageTitle';
 import { useSession } from 'next-auth/client';
@@ -10,21 +10,17 @@ const NewClips = () => {
 	const [clips, setClips] = useState([]);
 	const [session, loading] = useSession();
 
-	const fetchClips = async () => {
-		try {
-			const { data } = await axios.get('/api/clips');
-
-			const { clips } = data;
-
-			setClips(clips);
-		} catch (error) {
-			console.log('Unable to fetch clips, ' + error);
-		}
-	};
-
-	useState(() => {
+	useEffect(() => {
 		fetchClips();
 	}, []);
+
+	const fetchClips = async () => {
+		const response = await axios.get('/api/clips');
+
+		const { clips } = response.data;
+
+		setClips(clips);
+	};
 
 	const renderClips = () => {
 		return clips.map((clip, index) => {
