@@ -19,7 +19,8 @@
 ## Functionalities
 
 - SSO with Twitch / Google / Github
-- Share Twitch Clips
+- Share Clips from Twitch
+- Up and Down voting system
 
   <br />
   <br />
