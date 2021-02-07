@@ -34,8 +34,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			);
 		}
 
-		res.status(201);
-		res.send({ message: 'Liked successfully' });
+		res.status(200);
+		res.send({ message: 'Updated like state successfully' });
 	} catch (error) {
 		res.status(500);
 		res.send({ message: 'Error trying to like Clip', error });
