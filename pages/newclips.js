@@ -38,7 +38,7 @@ const NewClips = () => {
 					likesCount={clip.likesCount}
 					dislikesCount={clip.dislikesCount}
 					commentsCount={clip.commentsCount}
-					currentUser={session.user}
+					currentUser={session ? session.user : null}
 					mongoClipId={clip._id}
 					likedBy={clip.likedBy}
 					dislikedBy={clip.dislikedBy}

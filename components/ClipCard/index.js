@@ -53,28 +53,30 @@ const ClipCard = ({
 }) => {
 	const classes = useStyles();
 	const [isLiked, setIsLiked] = useState(
-		likedBy.includes(currentUser.id) ? true : false
+		currentUser && likedBy.includes(currentUser.id) ? true : false
 	);
 	const [isDisliked, setIsDisliked] = useState(
-		dislikedBy.includes(currentUser.id) ? true : false
+		currentUser && dislikedBy.includes(currentUser.id) ? true : false
 	);
 	const [likes, setLikes] = useState(likesCount);
 	const [dislikes, setDislikes] = useState(dislikesCount);
 
 	const handleLike = async () => {
-		try {
-			await axios.put('/api/clips/like', {
-				userId: currentUser.id,
-				clipId: mongoClipId,
-				isLiked: isLiked,
-			});
+		if (currentUser) {
+			try {
+				await axios.put('/api/clips/like', {
+					userId: currentUser.id,
+					clipId: mongoClipId,
+					isLiked: isLiked,
+				});
 
-			isLiked && setLikes(likes - 1);
-			!isLiked && setLikes(likes + 1);
+				isLiked && setLikes(likes - 1);
+				!isLiked && setLikes(likes + 1);
 
-			setIsLiked(!isLiked);
-		} catch (error) {
-			console.log(error);
+				setIsLiked(!isLiked);
+			} catch (error) {
+				console.log(error);
+			}
 		}
 	};
 
