@@ -38,7 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			db.collection('clips').updateOne(
 				{
 					_id: new ObjectID(clipId),
-					likedBy: new ObjectID(userId),
+					dislikedBy: new ObjectID(userId),
 				},
 				{
 					$inc: { dislikesCount: -1 },
