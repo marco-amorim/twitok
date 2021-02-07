@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -8,9 +8,12 @@ import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {
 	CommentOutlined,
+	ThumbDown,
 	ThumbDownOutlined,
+	ThumbUp,
 	ThumbUpOutlined,
 } from '@material-ui/icons';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -35,8 +38,45 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const ClipCard = ({ clipId, title, creatorName, userPhoto }) => {
+const ClipCard = ({
+	twClipId,
+	title,
+	creatorName,
+	userPhoto,
+	commentsCount,
+	likesCount,
+	dislikesCount,
+	currentUser,
+	mongoClipId,
+	likedBy,
+	dislikedBy,
+}) => {
 	const classes = useStyles();
+	const [isLiked, setIsLiked] = useState(
+		likedBy.includes(currentUser.id) ? true : false
+	);
+	const [isDisliked, setIsDisliked] = useState(
+		dislikedBy.includes(currentUser.id) ? true : false
+	);
+	const [likes, setLikes] = useState(likesCount);
+	const [dislikes, setDislikes] = useState(dislikesCount);
+
+	const handleLike = async () => {
+		try {
+			await axios.put('/api/clips/like', {
+				userId: currentUser.id,
+				clipId: mongoClipId,
+				isLiked: isLiked,
+			});
+
+			isLiked && setLikes(likes - 1);
+			!isLiked && setLikes(likes + 1);
+
+			setIsLiked(!isLiked);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<Card className={classes.root}>
@@ -52,22 +92,22 @@ const ClipCard = ({ clipId, title, creatorName, userPhoto }) => {
 			/>
 
 			<iframe
-				src={`https://clips.twitch.tv/embed?clip=${clipId}&parent=${process.env.DOMAIN}`}
+				src={`https://clips.twitch.tv/embed?clip=${twClipId}&parent=${process.env.DOMAIN}`}
 				className={classes.iframe}
 				allowFullScreen={true}
 			/>
 
 			<CardActions disableSpacing>
-				<IconButton aria-label="like">
-					<ThumbUpOutlined />
+				<IconButton aria-label="like" onClick={handleLike}>
+					{isLiked ? <ThumbUp /> : <ThumbUpOutlined />}
 				</IconButton>
-				0
+				{likes}
 				<IconButton aria-label="dislike">
-					<ThumbDownOutlined />
+					{isDisliked ? <ThumbDown /> : <ThumbDownOutlined />}
 				</IconButton>
-				0
+				{dislikes}
 				<div className={classes.rightIcons}>
-					0
+					{commentsCount}
 					<IconButton aria-label="comment">
 						<CommentOutlined />
 					</IconButton>
