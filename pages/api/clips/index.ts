@@ -5,7 +5,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		const { db } = await connect();
 
-		const clips = await db.collection('clips').find().toArray();
+		const clips = await db
+			.collection('clips')
+			.find()
+			.sort({ createdAt: -1 })
+			.toArray();
 
 		res.status(200);
 		res.send({ clips: clips });

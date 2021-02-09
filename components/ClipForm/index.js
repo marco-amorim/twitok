@@ -9,6 +9,7 @@ const ClipForm = ({ user }) => {
 	const router = useRouter();
 
 	const initialValues = {
+		title: '',
 		clipId: '',
 	};
 
