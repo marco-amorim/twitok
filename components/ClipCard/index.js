@@ -5,9 +5,9 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {
 	CommentOutlined,
+	Delete,
 	ThumbDown,
 	ThumbDownOutlined,
 	ThumbUp,
@@ -50,6 +50,7 @@ const ClipCard = ({
 	mongoClipId,
 	likedBy,
 	dislikedBy,
+	editMode,
 }) => {
 	const classes = useStyles();
 	const [isLiked, setIsLiked] = useState(
@@ -114,9 +115,11 @@ const ClipCard = ({
 			<CardHeader
 				avatar={<Avatar src={userPhoto} aria-label="avatar" />}
 				action={
-					<IconButton aria-label="settings">
-						<MoreVertIcon />
-					</IconButton>
+					editMode && (
+						<IconButton aria-label="delete">
+							<Delete />
+						</IconButton>
+					)
 				}
 				title={title}
 				subheader={`Posted by: ${creatorName}`}
