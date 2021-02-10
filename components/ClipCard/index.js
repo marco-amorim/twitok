@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 		height: 350,
 
 		'@media(max-width: 767px)': {
-			height: 185,
+			height: 220,
 		},
 	},
 	rightIcons: {
