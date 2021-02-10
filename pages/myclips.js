@@ -53,12 +53,6 @@ const MyClips = () => {
 			});
 		}
 
-		if (!loading && clips.length === 0) {
-			return (
-				<PageMessage>You still don't have any published clips.</PageMessage>
-			);
-		}
-
 		if (!loading && !session) {
 			return <PageMessage>You need to sign in to see your clips.</PageMessage>;
 		}
