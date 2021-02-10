@@ -18,7 +18,7 @@ const ClipForm = ({ user }) => {
 		axios.post('/api/clips/create', newClip);
 
 		actions.resetForm();
-		router.push('/newclips');
+		router.push('/myclips');
 	};
 
 	return (
