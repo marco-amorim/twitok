@@ -1,48 +1,57 @@
 import axios from 'axios';
+import { useSession } from 'next-auth/client';
 import React, { useEffect, useState } from 'react';
 import ClipCard from '../components/ClipCard';
+import LoadingSpinner from '../components/LoadingSpinner';
 import { PageContainer } from '../styles/PageContainer';
 import { PageTitle } from '../styles/PageTitle';
 
 const TopClips = () => {
 	const [clips, setClips] = useState([]);
+	const [session, loading] = useSession();
 
 	useEffect(() => {
-		fetchTopClips();
+		fetchClips();
 	}, []);
 
-	const fetchTopClips = async () => {
-		const response = await axios.get('/api/token/twitch');
-		const { access_token } = response.data;
+	const fetchClips = async () => {
+		const response = await axios.get('/api/clips/top');
 
-		const clips = await axios.get('https://api.twitch.tv/helix/clips', {
-			headers: {
-				'client-id': process.env.TWITCH_CLIENT_ID,
-				Authorization: 'Bearer ' + access_token,
-			},
-			params: {
-				id: 'TallCuteChamoisSquadGoals',
-			},
-		});
+		const { clips } = response.data;
 
-		const { data } = clips.data;
-
-		setClips(data);
+		setClips(clips);
 	};
 
 	return (
 		<PageContainer>
 			<PageTitle>Top Clips</PageTitle>
-			{clips.map((clip, index) => {
-				return (
-					<ClipCard
-						key={index}
-						clipId={clip.id}
-						title={clip.title}
-						creatorName={clip.creator_name}
-					/>
-				);
-			})}
+			{loading ? (
+				<LoadingSpinner
+					height="50px"
+					width="50px"
+					color="var(--purple-default)"
+				/>
+			) : (
+				clips.map((clip, index) => {
+					return (
+						<ClipCard
+							key={index}
+							creatorName={clip.user.name}
+							title={clip.title}
+							twClipId={clip.clipId}
+							userPhoto={clip.user.image}
+							likesCount={clip.likesCount}
+							dislikesCount={clip.dislikesCount}
+							commentsCount={clip.commentsCount}
+							currentUser={session ? session.user : null}
+							mongoClipId={clip._id}
+							likedBy={clip.likedBy}
+							dislikedBy={clip.dislikedBy}
+							editMode={false}
+						/>
+					);
+				})
+			)}
 		</PageContainer>
 	);
 };
