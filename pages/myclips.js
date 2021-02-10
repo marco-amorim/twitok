@@ -5,6 +5,7 @@ import { PageTitle } from '../styles/PageTitle';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ClipCard from '../components/ClipCard';
 import axios from 'axios';
+import { PageMessage } from '../styles/PageMessage';
 
 const MyClips = () => {
 	const [clips, setClips] = useState([]);
@@ -29,25 +30,32 @@ const MyClips = () => {
 	};
 
 	const renderClips = () => {
-		return clips.map((clip, index) => {
+		if (clips.length > 0 && session) {
+			console.log(clips);
+			return clips.map((clip, index) => {
+				return (
+					<ClipCard
+						key={index}
+						creatorName={clip.user.name}
+						title={clip.title}
+						twClipId={clip.clipId}
+						userPhoto={clip.user.image}
+						likesCount={clip.likesCount}
+						dislikesCount={clip.dislikesCount}
+						commentsCount={clip.commentsCount}
+						currentUser={session ? session.user : null}
+						mongoClipId={clip._id}
+						likedBy={clip.likedBy}
+						dislikedBy={clip.dislikedBy}
+						editMode={true}
+					/>
+				);
+			});
+		} else {
 			return (
-				<ClipCard
-					key={index}
-					creatorName={clip.user.name}
-					title={clip.title}
-					twClipId={clip.clipId}
-					userPhoto={clip.user.image}
-					likesCount={clip.likesCount}
-					dislikesCount={clip.dislikesCount}
-					commentsCount={clip.commentsCount}
-					currentUser={session ? session.user : null}
-					mongoClipId={clip._id}
-					likedBy={clip.likedBy}
-					dislikedBy={clip.dislikedBy}
-					editMode={true}
-				/>
+				<PageMessage>You still don't have any published clips. :/</PageMessage>
 			);
-		});
+		}
 	};
 
 	return (
