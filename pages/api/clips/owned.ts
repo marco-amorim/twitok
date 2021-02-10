@@ -17,6 +17,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		res.send({ clips: clips });
 	} catch (error) {
 		res.status(500);
-		res.send({ message: 'Error trying to fetch Clips', error });
+		res.send({ message: 'Error trying to fetch User Clips', error });
 	}
 };
