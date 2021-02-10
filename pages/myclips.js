@@ -30,7 +30,7 @@ const MyClips = () => {
 	};
 
 	const renderClips = () => {
-		if (clips.length > 0 && session && !loading) {
+		if (!loading && clips.length > 0 && session) {
 			console.log(clips);
 			return clips.map((clip, index) => {
 				return (
@@ -51,6 +51,12 @@ const MyClips = () => {
 					/>
 				);
 			});
+		}
+
+		if (!loading && clips.length === 0) {
+			return (
+				<PageMessage>You still don't have any published clips.</PageMessage>
+			);
 		}
 
 		if (!loading && !session) {
