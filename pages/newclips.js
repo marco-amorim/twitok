@@ -38,6 +38,7 @@ const NewClips = () => {
 					mongoClipId={clip._id}
 					likedBy={clip.likedBy}
 					dislikedBy={clip.dislikedBy}
+					editMode={false}
 				/>
 			);
 		});

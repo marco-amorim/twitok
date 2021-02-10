@@ -10,6 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		const clips = await db
 			.collection('clips')
 			.find({ 'user.id': userId })
+			.sort({ createdAt: -1 })
 			.toArray();
 
 		res.status(200);

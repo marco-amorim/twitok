@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ClipCard = ({
 	twClipId,
+	mongoClipId,
 	title,
 	creatorName,
 	userPhoto,
@@ -47,7 +48,6 @@ const ClipCard = ({
 	likesCount,
 	dislikesCount,
 	currentUser,
-	mongoClipId,
 	likedBy,
 	dislikedBy,
 	editMode,
@@ -110,13 +110,21 @@ const ClipCard = ({
 		}
 	};
 
+	const handleDelete = async () => {
+		await axios.post('/api/clips/delete', {
+			clipId: mongoClipId,
+		});
+
+		window.location.reload();
+	};
+
 	return (
 		<Card className={classes.root}>
 			<CardHeader
 				avatar={<Avatar src={userPhoto} aria-label="avatar" />}
 				action={
 					editMode && (
-						<IconButton aria-label="delete">
+						<IconButton aria-label="delete" onClick={handleDelete}>
 							<Delete />
 						</IconButton>
 					)
