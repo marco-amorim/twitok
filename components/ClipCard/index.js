@@ -14,6 +14,7 @@ import {
 	ThumbUpOutlined,
 } from '@material-ui/icons';
 import axios from 'axios';
+import ConfirmModal from '../ConfirmModal';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -61,6 +62,7 @@ const ClipCard = ({
 	);
 	const [likes, setLikes] = useState(likesCount);
 	const [dislikes, setDislikes] = useState(dislikesCount);
+	const [showDeleteModal, setShowDeleteModal] = useState(false);
 
 	const handleLike = async () => {
 		if (currentUser) {
@@ -119,43 +121,58 @@ const ClipCard = ({
 	};
 
 	return (
-		<Card className={classes.root}>
-			<CardHeader
-				avatar={<Avatar src={userPhoto} aria-label="avatar" />}
-				action={
-					editMode && (
-						<IconButton aria-label="delete" onClick={handleDelete}>
-							<Delete />
-						</IconButton>
-					)
-				}
-				title={title}
-				subheader={`Posted by: ${creatorName}`}
-			/>
+		<>
+			{showDeleteModal && (
+				<ConfirmModal
+					onConfirm={handleDelete}
+					onDismiss={() => setShowDeleteModal(false)}
+					isOpen={showDeleteModal}
+					title="Delete Clip"
+					description="Are you sure you want to delete this Clip?"
+				/>
+			)}
 
-			<iframe
-				src={`https://clips.twitch.tv/embed?clip=${twClipId}&parent=${process.env.DOMAIN}`}
-				className={classes.iframe}
-				allowFullScreen={true}
-			/>
+			<Card className={classes.root}>
+				<CardHeader
+					avatar={<Avatar src={userPhoto} aria-label="avatar" />}
+					action={
+						editMode && (
+							<IconButton
+								aria-label="delete"
+								onClick={() => setShowDeleteModal(true)}
+							>
+								<Delete />
+							</IconButton>
+						)
+					}
+					title={title}
+					subheader={`Posted by: ${creatorName}`}
+				/>
 
-			<CardActions disableSpacing>
-				<IconButton aria-label="like" onClick={handleLike}>
-					{isLiked ? <ThumbUp /> : <ThumbUpOutlined />}
-				</IconButton>
-				{likes}
-				<IconButton aria-label="dislike" onClick={handleDislike}>
-					{isDisliked ? <ThumbDown /> : <ThumbDownOutlined />}
-				</IconButton>
-				{dislikes}
-				<div className={classes.rightIcons}>
-					{commentsCount}
-					<IconButton aria-label="comment">
-						<CommentOutlined />
+				<iframe
+					src={`https://clips.twitch.tv/embed?clip=${twClipId}&parent=${process.env.DOMAIN}`}
+					className={classes.iframe}
+					allowFullScreen={true}
+				/>
+
+				<CardActions disableSpacing>
+					<IconButton aria-label="like" onClick={handleLike}>
+						{isLiked ? <ThumbUp /> : <ThumbUpOutlined />}
 					</IconButton>
-				</div>
-			</CardActions>
-		</Card>
+					{likes}
+					<IconButton aria-label="dislike" onClick={handleDislike}>
+						{isDisliked ? <ThumbDown /> : <ThumbDownOutlined />}
+					</IconButton>
+					{dislikes}
+					<div className={classes.rightIcons}>
+						{commentsCount}
+						<IconButton aria-label="comment">
+							<CommentOutlined />
+						</IconButton>
+					</div>
+				</CardActions>
+			</Card>
+		</>
 	);
 };
 

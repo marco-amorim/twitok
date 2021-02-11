@@ -31,7 +31,6 @@ const MyClips = () => {
 
 	const renderClips = () => {
 		if (!loading && clips.length > 0 && session) {
-			console.log(clips);
 			return clips.map((clip, index) => {
 				return (
 					<ClipCard
