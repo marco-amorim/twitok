@@ -7,6 +7,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import {
 	CommentOutlined,
+	Comment,
 	Delete,
 	ThumbDown,
 	ThumbDownOutlined,
@@ -15,6 +16,8 @@ import {
 } from '@material-ui/icons';
 import axios from 'axios';
 import ConfirmModal from '../ConfirmModal';
+import { CardContent, Collapse } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -63,6 +66,7 @@ const ClipCard = ({
 	const [likes, setLikes] = useState(likesCount);
 	const [dislikes, setDislikes] = useState(dislikesCount);
 	const [showDeleteModal, setShowDeleteModal] = useState(false);
+	const [showComments, setShowComments] = useState(false);
 
 	const handleLike = async () => {
 		if (currentUser) {
@@ -166,14 +170,41 @@ const ClipCard = ({
 					{dislikes}
 					<div className={classes.rightIcons}>
 						{commentsCount}
-						<IconButton aria-label="comment">
-							<CommentOutlined />
+						<IconButton
+							aria-label="comment"
+							onClick={() => setShowComments(!showComments)}
+						>
+							{showComments ? <Comment /> : <CommentOutlined />}
 						</IconButton>
 					</div>
 				</CardActions>
+				<Collapse in={showComments} timeout="auto" unmountOnExit>
+					<CardContent>
+						<h1>Comments go here</h1>
+					</CardContent>
+				</Collapse>
 			</Card>
 		</>
 	);
+};
+
+ClipCard.propTypes = {
+	twClipId: PropTypes.string.isRequired,
+	mongoClipId: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	creatorName: PropTypes.string.isRequired,
+	userPhoto: PropTypes.string.isRequired,
+	commentsCount: PropTypes.number.isRequired,
+	likesCount: PropTypes.number.isRequired,
+	dislikesCount: PropTypes.number.isRequired,
+	currentUser: PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		email: PropTypes.string.isRequired,
+		image: PropTypes.string.isRequired,
+	}),
+	likedBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+	dislikedBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+	editMode: PropTypes.bool.isRequired,
 };
 
 export default ClipCard;

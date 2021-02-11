@@ -5,7 +5,7 @@ import { PageTitle } from '../styles/PageTitle';
 import { useSession } from 'next-auth/client';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-const NewClip = () => {
+const ShareClip = () => {
 	const [session, loading] = useSession();
 
 	const renderForm = () => {
@@ -32,4 +32,4 @@ const NewClip = () => {
 	);
 };
 
-export default NewClip;
+export default ShareClip;

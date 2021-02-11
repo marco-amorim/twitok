@@ -9,6 +9,7 @@ import { UserMenuContainer, UserMenuImg } from './styles';
 import { ArrowDropDown } from '@material-ui/icons';
 import { signOut } from 'next-auth/client';
 import { Button } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const UserMenu = ({ userPhoto }) => {
 	const [open, setOpen] = React.useState(false);
@@ -108,6 +109,10 @@ const UserMenu = ({ userPhoto }) => {
 			</Popper>
 		</UserMenuContainer>
 	);
+};
+
+UserMenu.propTypes = {
+	userPhoto: PropTypes.string.isRequired,
 };
 
 export default UserMenu;

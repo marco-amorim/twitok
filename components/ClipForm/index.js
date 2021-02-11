@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { FormButton, FormContainer } from './styles';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 
 const ClipForm = ({ user }) => {
 	const router = useRouter();
@@ -49,6 +50,14 @@ const ClipForm = ({ user }) => {
 			</FormContainer>
 		</Formik>
 	);
+};
+
+ClipForm.propTypes = {
+	user: PropTypes.shape({
+		name: PropTypes.string,
+		image: PropTypes.string,
+		email: PropTypes.string,
+	}).isRequired,
 };
 
 export default ClipForm;

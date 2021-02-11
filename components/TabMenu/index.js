@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 	},
 });
 
-export default function TabMenu() {
+const TabMenu = () => {
 	const classes = useStyles();
 	const router = useRouter();
 	const pathname = router.pathname;
@@ -89,4 +89,6 @@ export default function TabMenu() {
 			</Tabs>
 		</Paper>
 	);
-}
+};
+
+export default TabMenu;

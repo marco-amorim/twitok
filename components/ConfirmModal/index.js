@@ -5,6 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import PropTypes from 'prop-types';
 
 const ConfirmModal = ({ isOpen, onConfirm, onDismiss, title, description }) => {
 	const handleClose = () => {
@@ -38,6 +39,14 @@ const ConfirmModal = ({ isOpen, onConfirm, onDismiss, title, description }) => {
 			</DialogActions>
 		</Dialog>
 	);
+};
+
+ConfirmModal.propTypes = {
+	isOpen: PropTypes.bool.isRequired,
+	onConfirm: PropTypes.func.isRequired,
+	onDismiss: PropTypes.func.isRequired,
+	title: PropTypes.string.isRequired,
+	description: PropTypes.string.isRequired,
 };
 
 export default ConfirmModal;
