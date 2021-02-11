@@ -28,6 +28,9 @@ export const MuiTheme = createMuiTheme({
 					backgroundColor: 'none',
 				},
 			},
+			textPrimary: {
+				color: 'var(--purple-default)',
+			},
 		},
 		MuiFormHelperText: {
 			root: {
