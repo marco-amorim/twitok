@@ -19,8 +19,8 @@
 ## Functionalities
 
 - SSO with Twitch / Google / Github
-- Post clips from Twitch
-- Delete posts
+- Share clips from Twitch
+- Delete clips
 - Like / Dislike voting system
 
   <br />
