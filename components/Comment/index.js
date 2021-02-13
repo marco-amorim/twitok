@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-	ListItem,
-	Avatar,
-	ListItemAvatar,
-	ListItemText,
-	Typography,
-} from '@material-ui/core';
+import { Avatar, ListItemAvatar, ListItemText } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { CommentItem, CommentText, CommentDate } from './styles';
 
