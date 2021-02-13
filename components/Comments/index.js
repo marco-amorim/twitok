@@ -10,6 +10,7 @@ const Comments = () => {
 				photoUrl="https://avatars.githubusercontent.com/u/40203788?s=460&u=bb67357c370e74a78cb43239833649004c9212d6&v=4"
 				text="Oi, tudo bem"
 				username="Marco Amorim"
+				createdAt="20/02/2020"
 			/>
 			<CommentDivider variant="inset" component="li" />
 		</CommentsContainer>

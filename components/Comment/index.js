@@ -7,16 +7,21 @@ import {
 	Typography,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { CommentItem, CommentText } from './styles';
+import { CommentItem, CommentText, CommentDate } from './styles';
 
-const Comment = ({ photoUrl, username, text }) => {
+const Comment = ({ photoUrl, username, text, createdAt }) => {
 	return (
 		<CommentItem>
 			<ListItemAvatar>
-				<Avatar alt="Remy Sharp" src={photoUrl} />
+				<Avatar alt="user" src={photoUrl} />
 			</ListItemAvatar>
 			<ListItemText
-				primary={username}
+				primary={
+					<>
+						{username}
+						<CommentDate>{createdAt}</CommentDate>
+					</>
+				}
 				secondary={
 					<CommentText component="span" variant="body2" color="textPrimary">
 						{text}
@@ -31,6 +36,7 @@ Comment.propTypes = {
 	photoUrl: PropTypes.string.isRequired,
 	username: PropTypes.string.isRequired,
 	text: PropTypes.string.isRequired,
+	createdAt: PropTypes.string.isRequired,
 };
 
 export default Comment;
