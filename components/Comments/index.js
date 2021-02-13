@@ -1,9 +1,13 @@
 import React from 'react';
-import Divider from '@material-ui/core/Divider';
+import CommentForm from '../CommentForm';
 import Comment from '../Comment';
 import { CommentDivider, CommentsContainer } from './styles';
 
 const Comments = () => {
+	const handleSubmit = (values) => {
+		alert(JSON.stringify(values));
+	};
+
 	return (
 		<CommentsContainer>
 			<Comment
@@ -13,6 +17,7 @@ const Comments = () => {
 				createdAt="20/02/2020"
 			/>
 			<CommentDivider variant="inset" component="li" />
+			<CommentForm onSubmit={handleSubmit} />
 		</CommentsContainer>
 	);
 };
