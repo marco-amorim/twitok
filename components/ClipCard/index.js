@@ -181,7 +181,7 @@ const ClipCard = ({
 				</CardActions>
 				<Collapse in={showComments} timeout="auto" unmountOnExit>
 					<CardContent>
-						<Comments />
+						<Comments loggedUser={currentUser} />
 					</CardContent>
 				</Collapse>
 			</Card>

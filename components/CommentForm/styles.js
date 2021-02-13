@@ -11,11 +11,11 @@ export const CommentFormStyled = styled(Form)`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin: 1.5rem auto 1.5rem auto;
+	margin: 2rem auto 1.5rem auto;
 	width: 90%;
 `;
 
 export const CommentFormButton = styled.button`
 	${buttonStyles}
-	margin-left: 1rem;
+	margin-left: 2rem;
 `;

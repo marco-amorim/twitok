@@ -2,10 +2,13 @@ import React from 'react';
 import CommentForm from '../CommentForm';
 import Comment from '../Comment';
 import { CommentDivider, CommentsContainer } from './styles';
+import PropTypes from 'prop-types';
 
-const Comments = () => {
+const Comments = ({ loggedUser }) => {
 	const handleSubmit = (values) => {
-		alert(JSON.stringify(values));
+		const newComment = { ...values, userId: loggedUser.id };
+
+		alert(JSON.stringify(newComment));
 	};
 
 	return (
@@ -17,9 +20,18 @@ const Comments = () => {
 				createdAt="20/02/2020"
 			/>
 			<CommentDivider variant="inset" component="li" />
-			<CommentForm onSubmit={handleSubmit} />
+			{loggedUser && <CommentForm onSubmit={handleSubmit} />}
 		</CommentsContainer>
 	);
+};
+
+Comments.propTypes = {
+	loggedUser: PropTypes.shape({
+		email: PropTypes.string.isRequired,
+		id: PropTypes.string.isRequired,
+		image: PropTypes.string.isRequired,
+		name: PropTypes.string.isRequired,
+	}),
 };
 
 export default Comments;
