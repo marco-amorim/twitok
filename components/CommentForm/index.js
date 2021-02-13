@@ -1,13 +1,10 @@
 import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 import TextField from '@material-ui/core/TextField';
-import {
-	CommentFormStyled,
-	CommentFormContainer,
-	CommentFormButton,
-} from './styles';
+import { CommentFormStyled, CommentFormContainer } from './styles';
 import { Send } from '@material-ui/icons';
 import PropTypes from 'prop-types';
+import { IconButton } from '@material-ui/core';
 
 const CommentForm = ({ onSubmit }) => {
 	const initialValues = {
@@ -32,9 +29,9 @@ const CommentForm = ({ onSubmit }) => {
 					helperText={<ErrorMessage name="comment" />}
 				/>
 
-				<CommentFormButton type="submit">
+				<IconButton type="submit">
 					<Send />
-				</CommentFormButton>
+				</IconButton>
 			</CommentFormStyled>
 		</CommentFormContainer>
 	);
