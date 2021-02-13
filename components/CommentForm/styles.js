@@ -17,5 +17,5 @@ export const CommentFormStyled = styled(Form)`
 
 export const CommentFormButton = styled.button`
 	${buttonStyles}
-	margin-left: 2rem;
+	margin-left: 1.5rem;
 `;
