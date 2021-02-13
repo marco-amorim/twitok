@@ -18,6 +18,7 @@ import axios from 'axios';
 import ConfirmModal from '../ConfirmModal';
 import { CardContent, Collapse } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import Comments from '../Comments';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -180,7 +181,7 @@ const ClipCard = ({
 				</CardActions>
 				<Collapse in={showComments} timeout="auto" unmountOnExit>
 					<CardContent>
-						<h1>Comments go here</h1>
+						<Comments />
 					</CardContent>
 				</Collapse>
 			</Card>
