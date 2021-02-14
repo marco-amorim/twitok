@@ -8,14 +8,14 @@ const CommentsSection = ({ loggedUser }) => {
 	const handleSubmit = (values) => {
 		const newDate = new Date();
 
-		const currentHour = newDate.getHours();
-		const currentMinute = newDate.getMinutes();
+		const hours = newDate.getHours();
+		const minutes = newDate.getMinutes();
 
-		const hours =
-			((currentHour + 11) % 12) + 1 < 10 ? '0' + currentHour : currentHour;
-		const minutes = currentMinute < 10 ? '0' + currentMinute : currentMinute;
+		const formatedHours = ((hours + 11) % 12) + 1 < 10 ? '0' + hours : hours;
+		const formatedMinutes = minutes < 10 ? '0' + minutes : minutes;
 
-		const time = hours + ':' + minutes;
+		const time = formatedHours + ':' + formatedMinutes;
+
 		const date =
 			newDate.getDate() +
 			'/' +
