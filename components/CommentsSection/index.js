@@ -4,7 +4,7 @@ import Comment from '../Comment';
 import { CommentDivider, CommentsContainer } from './styles';
 import PropTypes from 'prop-types';
 
-const Comments = ({ loggedUser }) => {
+const CommentsSection = ({ loggedUser }) => {
 	const handleSubmit = (values) => {
 		const newComment = { ...values, userId: loggedUser.id };
 
@@ -17,7 +17,8 @@ const Comments = ({ loggedUser }) => {
 				photoUrl="https://avatars.githubusercontent.com/u/40203788?s=460&u=bb67357c370e74a78cb43239833649004c9212d6&v=4"
 				text="Oi, tudo bem"
 				username="Marco Amorim"
-				createdAt="20/02/2020"
+				date="20/02/2020"
+				time="21:03"
 			/>
 			<CommentDivider variant="inset" component="li" />
 			{loggedUser && <CommentInput onSubmit={handleSubmit} />}
@@ -25,7 +26,7 @@ const Comments = ({ loggedUser }) => {
 	);
 };
 
-Comments.propTypes = {
+CommentsSection.propTypes = {
 	loggedUser: PropTypes.shape({
 		email: PropTypes.string.isRequired,
 		id: PropTypes.string.isRequired,
@@ -34,4 +35,4 @@ Comments.propTypes = {
 	}),
 };
 
-export default Comments;
+export default CommentsSection;

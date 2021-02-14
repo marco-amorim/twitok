@@ -37,7 +37,7 @@ const CommentInput = ({ onSubmit }) => {
 	);
 };
 
-CommentForm.propTypes = {
+CommentInput.propTypes = {
 	onSubmit: PropTypes.func.isRequired,
 };
 
