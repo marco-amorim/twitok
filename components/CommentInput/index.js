@@ -1,12 +1,12 @@
 import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 import TextField from '@material-ui/core/TextField';
-import { CommentFormStyled, CommentFormContainer } from './styles';
-import { Send } from '@material-ui/icons';
+import { CommentForm, CommentFormContainer } from './styles';
+import { AddComment } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import { IconButton } from '@material-ui/core';
 
-const CommentForm = ({ onSubmit }) => {
+const CommentInput = ({ onSubmit }) => {
 	const initialValues = {
 		comment: '',
 	};
@@ -17,7 +17,7 @@ const CommentForm = ({ onSubmit }) => {
 
 	return (
 		<CommentFormContainer onSubmit={handleSubmit} initialValues={initialValues}>
-			<CommentFormStyled>
+			<CommentForm>
 				<Field
 					required={true}
 					as={TextField}
@@ -30,9 +30,9 @@ const CommentForm = ({ onSubmit }) => {
 				/>
 
 				<IconButton type="submit">
-					<Send />
+					<AddComment />
 				</IconButton>
-			</CommentFormStyled>
+			</CommentForm>
 		</CommentFormContainer>
 	);
 };
@@ -41,4 +41,4 @@ CommentForm.propTypes = {
 	onSubmit: PropTypes.func.isRequired,
 };
 
-export default CommentForm;
+export default CommentInput;

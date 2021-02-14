@@ -6,7 +6,7 @@ export const CommentFormContainer = styled(Formik)`
 	justify-content: center;
 `;
 
-export const CommentFormStyled = styled(Form)`
+export const CommentForm = styled(Form)`
 	display: flex;
 	flex-direction: row;
 	align-items: center;

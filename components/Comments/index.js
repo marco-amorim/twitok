@@ -1,5 +1,5 @@
 import React from 'react';
-import CommentForm from '../CommentForm';
+import CommentInput from '../CommentInput';
 import Comment from '../Comment';
 import { CommentDivider, CommentsContainer } from './styles';
 import PropTypes from 'prop-types';
@@ -20,7 +20,7 @@ const Comments = ({ loggedUser }) => {
 				createdAt="20/02/2020"
 			/>
 			<CommentDivider variant="inset" component="li" />
-			{loggedUser && <CommentForm onSubmit={handleSubmit} />}
+			{loggedUser && <CommentInput onSubmit={handleSubmit} />}
 		</CommentsContainer>
 	);
 };
