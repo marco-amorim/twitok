@@ -6,7 +6,29 @@ import PropTypes from 'prop-types';
 
 const CommentsSection = ({ loggedUser }) => {
 	const handleSubmit = (values) => {
-		const newComment = { ...values, userId: loggedUser.id };
+		const newDate = new Date();
+
+		const currentHour = newDate.getHours();
+		const currentMinute = newDate.getMinutes();
+
+		const hours =
+			((currentHour + 11) % 12) + 1 < 10 ? '0' + currentHour : currentHour;
+		const minutes = currentMinute < 10 ? '0' + currentMinute : currentMinute;
+
+		const time = hours + ':' + minutes;
+		const date =
+			newDate.getDate() +
+			'/' +
+			(newDate.getMonth() + 1) +
+			'/' +
+			newDate.getFullYear();
+
+		const newComment = {
+			...values,
+			userId: loggedUser.id,
+			time: time,
+			date: date,
+		};
 
 		alert(JSON.stringify(newComment));
 	};
