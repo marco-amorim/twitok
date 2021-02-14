@@ -1,6 +1,6 @@
 import { ObjectID } from 'mongodb';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { connect } from '../../../utils/database';
+import { connect } from '../../../../utils/database';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	try {

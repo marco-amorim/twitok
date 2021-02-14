@@ -72,7 +72,7 @@ const ClipCard = ({
 	const handleLike = async () => {
 		if (currentUser) {
 			try {
-				await axios.put('/api/clips/like', {
+				await axios.put('/api/clips/vote/like', {
 					userId: currentUser.id,
 					clipId: mongoClipId,
 					isLiked: isLiked,
@@ -96,7 +96,7 @@ const ClipCard = ({
 	const handleDislike = async () => {
 		if (currentUser) {
 			try {
-				await axios.put('/api/clips/dislike', {
+				await axios.put('/api/clips/vote/dislike', {
 					userId: currentUser.id,
 					clipId: mongoClipId,
 					isDisliked: isDisliked,
