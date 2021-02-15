@@ -18,3 +18,7 @@ export const CommentDate = styled.span`
 	right: 0px;
 	top: 0px;
 `;
+
+export const DeleteButtonContainer = styled.div`
+	margin-top: auto;
+`;

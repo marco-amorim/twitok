@@ -11,38 +11,44 @@ const CommentsSection = ({
 	increaseComments,
 	decreaseComments,
 }) => {
-	const handleSubmit = (values, actions) => {
-		const newDate = new Date();
+	const handleSubmit = async (values, actions) => {
+		try {
+			const newDate = new Date();
 
-		const hours = newDate.getHours();
-		const minutes = newDate.getMinutes();
+			const hours = newDate.getHours();
+			const minutes = newDate.getMinutes();
 
-		const formatedHours = hours < 10 ? '0' + hours : hours;
-		const formatedMinutes = minutes < 10 ? '0' + minutes : minutes;
+			const formatedHours = hours < 10 ? '0' + hours : hours;
+			const formatedMinutes = minutes < 10 ? '0' + minutes : minutes;
 
-		const time = formatedHours + ':' + formatedMinutes;
+			const time = formatedHours + ':' + formatedMinutes;
 
-		const date =
-			newDate.getDate() +
-			'/' +
-			(newDate.getMonth() + 1) +
-			'/' +
-			newDate.getFullYear();
+			const date =
+				newDate.getDate() +
+				'/' +
+				(newDate.getMonth() + 1) +
+				'/' +
+				newDate.getFullYear();
 
-		const newComment = {
-			...values,
-			userId: loggedUser.id,
-			time: time,
-			date: date,
-		};
+			const newComment = {
+				...values,
+				userId: loggedUser.id,
+				time: time,
+				date: date,
+			};
 
-		axios.post('/api/clips/comments/create', {
-			comment: newComment,
-			clipId: clipId,
-		});
-
-		actions.resetForm();
-		increaseComments();
+			await axios.post('/api/clips/comments/create', {
+				comment: newComment,
+				clipId: clipId,
+			});
+		} catch (error) {
+			console.log(
+				'We are having trouble trying to create the comment, error: ' + error
+			);
+		} finally {
+			actions.resetForm();
+			increaseComments();
+		}
 	};
 
 	return (
@@ -53,6 +59,9 @@ const CommentsSection = ({
 				username="Marco Amorim"
 				date="20/02/2020"
 				time="21:03"
+				decreaseComments={decreaseComments}
+				loggedUserId={loggedUser.id}
+				commentUserId={loggedUser.id}
 			/>
 			<CommentDivider variant="inset" component="li" />
 			{loggedUser && <CommentInput onSubmit={handleSubmit} />}

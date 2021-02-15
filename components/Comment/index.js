@@ -1,9 +1,33 @@
 import React from 'react';
-import { Avatar, ListItemAvatar, ListItemText } from '@material-ui/core';
+import {
+	Avatar,
+	IconButton,
+	ListItemAvatar,
+	ListItemText,
+} from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { CommentItem, CommentText, CommentDate } from './styles';
+import {
+	CommentItem,
+	CommentText,
+	CommentDate,
+	DeleteButtonContainer,
+} from './styles';
+import { Delete } from '@material-ui/icons';
 
-const Comment = ({ photoUrl, username, text, date, time }) => {
+const Comment = ({
+	photoUrl,
+	username,
+	text,
+	date,
+	time,
+	decreaseComments,
+	loggedUserId,
+	commentUserId,
+}) => {
+	const handleDelete = () => {
+		alert('delete!');
+	};
+
 	return (
 		<CommentItem>
 			<ListItemAvatar>
@@ -24,6 +48,13 @@ const Comment = ({ photoUrl, username, text, date, time }) => {
 					</CommentText>
 				}
 			/>
+			{loggedUserId && loggedUserId === commentUserId ? (
+				<DeleteButtonContainer>
+					<IconButton aria-label="delete" onClick={handleDelete}>
+						<Delete />
+					</IconButton>
+				</DeleteButtonContainer>
+			) : null}
 		</CommentItem>
 	);
 };
@@ -34,6 +65,9 @@ Comment.propTypes = {
 	text: PropTypes.string.isRequired,
 	date: PropTypes.string.isRequired,
 	time: PropTypes.string.isRequired,
+	decreaseComments: PropTypes.func.isRequired,
+	loggedUserId: PropTypes.string.isRequired,
+	commentUserId: PropTypes.string.isRequired,
 };
 
 export default Comment;
