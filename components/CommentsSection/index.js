@@ -12,7 +12,7 @@ const CommentsSection = ({ loggedUser, clipId }) => {
 		const hours = newDate.getHours();
 		const minutes = newDate.getMinutes();
 
-		const formatedHours = ((hours + 11) % 12) + 1 < 10 ? '0' + hours : hours;
+		const formatedHours = hours < 10 ? '0' + hours : hours;
 		const formatedMinutes = minutes < 10 ? '0' + minutes : minutes;
 
 		const time = formatedHours + ':' + formatedMinutes;
