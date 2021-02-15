@@ -20,9 +20,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		);
 
 		res.status(200);
-		res.send({ message: 'Updated dislike state successfully' });
+		res.send({ message: 'Comment deleted successfully' });
 	} catch (error) {
 		res.status(500);
-		res.send({ message: 'Error trying to dislike Clip', error });
+		res.send({ message: 'Error trying to delete Comment', error });
 	}
 };
