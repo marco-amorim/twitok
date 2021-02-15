@@ -18,7 +18,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		console.log(commentsList);
 
 		res.status(200);
-		res.send({ comments: commentsList });
+		res.send({ commentsList: commentsList });
 	} catch (error) {
 		res.status(500);
 		res.send({ message: 'Error trying to fetch Comments', error });

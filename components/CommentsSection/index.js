@@ -18,7 +18,8 @@ const CommentsSection = ({
 	}, []);
 
 	const fetchComments = async () => {
-		const commentsList = await axios.get(`/api/clips/comments/${clipId}`);
+		const { data } = await axios.get(`/api/clips/comments/${clipId}`);
+		const { commentsList } = data;
 
 		setComments(commentsList);
 	};
@@ -60,10 +61,12 @@ const CommentsSection = ({
 		} finally {
 			actions.resetForm();
 			increaseComments();
+			fetchComments();
 		}
 	};
 
 	const renderComments = () => {
+		console.log(comments);
 		return comments.map((comment, index) => {
 			return (
 				<Comment
@@ -84,7 +87,7 @@ const CommentsSection = ({
 
 	return (
 		<CommentsContainer>
-			{comments && renderComments()}
+			{renderComments()}
 			<CommentDivider variant="inset" component="li" />
 			{loggedUser && <CommentInput onSubmit={handleSubmit} />}
 		</CommentsContainer>
