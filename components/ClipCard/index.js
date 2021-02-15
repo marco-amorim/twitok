@@ -181,7 +181,7 @@ const ClipCard = ({
 				</CardActions>
 				<Collapse in={showComments} timeout="auto" unmountOnExit>
 					<CardContent>
-						<CommentsSection loggedUser={currentUser} />
+						<CommentsSection loggedUser={currentUser} clipId={mongoClipId} />
 					</CardContent>
 				</Collapse>
 			</Card>

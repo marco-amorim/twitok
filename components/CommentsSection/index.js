@@ -3,9 +3,10 @@ import CommentInput from '../CommentInput';
 import Comment from '../Comment';
 import { CommentDivider, CommentsContainer } from './styles';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
-const CommentsSection = ({ loggedUser }) => {
-	const handleSubmit = (values) => {
+const CommentsSection = ({ loggedUser, clipId }) => {
+	const handleSubmit = (values, actions) => {
 		const newDate = new Date();
 
 		const hours = newDate.getHours();
@@ -30,7 +31,12 @@ const CommentsSection = ({ loggedUser }) => {
 			date: date,
 		};
 
-		alert(JSON.stringify(newComment));
+		axios.post('/api/clips/comments/create', {
+			comment: newComment,
+			clipId: clipId,
+		});
+
+		actions.resetForm();
 	};
 
 	return (
@@ -55,6 +61,7 @@ CommentsSection.propTypes = {
 		image: PropTypes.string.isRequired,
 		name: PropTypes.string.isRequired,
 	}),
+	clipId: PropTypes.string.isRequired,
 };
 
 export default CommentsSection;

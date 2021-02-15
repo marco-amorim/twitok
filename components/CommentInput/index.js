@@ -11,8 +11,8 @@ const CommentInput = ({ onSubmit }) => {
 		comment: '',
 	};
 
-	const handleSubmit = (values) => {
-		onSubmit(values);
+	const handleSubmit = (values, actions) => {
+		onSubmit(values, actions);
 	};
 
 	return (
