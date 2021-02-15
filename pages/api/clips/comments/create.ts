@@ -18,9 +18,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			}
 		);
 
-		console.log(comment);
-		console.log(clipId);
-
 		res.status(201);
 		res.send({ message: 'Comment created successfully' });
 	} catch (error) {

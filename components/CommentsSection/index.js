@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CommentInput from '../CommentInput';
 import Comment from '../Comment';
 import { CommentDivider, CommentsContainer } from './styles';
@@ -11,6 +11,18 @@ const CommentsSection = ({
 	increaseComments,
 	decreaseComments,
 }) => {
+	const [comments, setComments] = useState([]);
+
+	useEffect(() => {
+		fetchComments();
+	}, []);
+
+	const fetchComments = async () => {
+		const commentsList = await axios.get(`/api/clips/comments/${clipId}`);
+
+		setComments(commentsList);
+	};
+
 	const handleSubmit = async (values, actions) => {
 		try {
 			const newDate = new Date();
@@ -32,7 +44,7 @@ const CommentsSection = ({
 
 			const newComment = {
 				...values,
-				userId: loggedUser.id,
+				user: loggedUser,
 				time: time,
 				date: date,
 			};
@@ -51,18 +63,28 @@ const CommentsSection = ({
 		}
 	};
 
+	const renderComments = () => {
+		return comments.map((comment, index) => {
+			return (
+				<Comment
+					key={index}
+					photoUrl={comment.user.image}
+					text={comment.text}
+					username={comment.user.name}
+					date={comment.date}
+					time={comment.time}
+					decreaseComments={decreaseComments}
+					loggedUserId={loggedUser.id}
+					commentUserId={comment.user.id}
+					clipId={clipId}
+				/>
+			);
+		});
+	};
+
 	return (
 		<CommentsContainer>
-			<Comment
-				photoUrl="https://avatars.githubusercontent.com/u/40203788?s=460&u=bb67357c370e74a78cb43239833649004c9212d6&v=4"
-				text="Oi, tudo bem"
-				username="Marco Amorim"
-				date="20/02/2020"
-				time="21:03"
-				decreaseComments={decreaseComments}
-				loggedUserId={loggedUser.id}
-				commentUserId={loggedUser.id}
-			/>
+			{comments && renderComments()}
 			<CommentDivider variant="inset" component="li" />
 			{loggedUser && <CommentInput onSubmit={handleSubmit} />}
 		</CommentsContainer>

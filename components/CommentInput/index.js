@@ -8,7 +8,7 @@ import { IconButton } from '@material-ui/core';
 
 const CommentInput = ({ onSubmit }) => {
 	const initialValues = {
-		comment: '',
+		text: '',
 	};
 
 	const handleSubmit = (values, actions) => {
@@ -23,10 +23,10 @@ const CommentInput = ({ onSubmit }) => {
 					as={TextField}
 					autoComplete="off"
 					label="Comment"
-					name="comment"
+					name="text"
 					fullWidth
 					type="text"
-					helperText={<ErrorMessage name="comment" />}
+					helperText={<ErrorMessage name="text" />}
 				/>
 
 				<IconButton type="submit">

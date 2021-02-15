@@ -13,6 +13,7 @@ import {
 	DeleteButtonContainer,
 } from './styles';
 import { Delete } from '@material-ui/icons';
+import axios from 'axios';
 
 const Comment = ({
 	photoUrl,
@@ -23,9 +24,14 @@ const Comment = ({
 	decreaseComments,
 	loggedUserId,
 	commentUserId,
+	clipId,
 }) => {
 	const handleDelete = () => {
-		alert('delete!');
+		axios.delete('/api/clips/comments', {
+			data: {
+				clipId: clipId,
+			},
+		});
 	};
 
 	return (
@@ -68,6 +74,7 @@ Comment.propTypes = {
 	decreaseComments: PropTypes.func.isRequired,
 	loggedUserId: PropTypes.string.isRequired,
 	commentUserId: PropTypes.string.isRequired,
+	clipId: PropTypes.string.isRequired,
 };
 
 export default Comment;
