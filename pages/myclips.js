@@ -55,6 +55,8 @@ const MyClips = () => {
 		if (!loading && !session) {
 			return <PageMessage>You need to sign in to see your clips.</PageMessage>;
 		}
+
+		return <PageMessage>You don't have any clips yet.</PageMessage>;
 	};
 
 	return (
