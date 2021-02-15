@@ -27,7 +27,7 @@ const Comment = ({
 	clipId,
 }) => {
 	const handleDelete = () => {
-		axios.delete('/api/clips/comments', {
+		axios.delete('/api/clips/comments/delete', {
 			data: {
 				clipId: clipId,
 			},
