@@ -20,7 +20,7 @@ import { CardContent, Collapse } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import CommentsSection from '../CommentsSection';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	root: {
 		width: 625,
 		marginBottom: '35px',
@@ -66,6 +66,7 @@ const ClipCard = ({
 	);
 	const [likes, setLikes] = useState(likesCount);
 	const [dislikes, setDislikes] = useState(dislikesCount);
+	const [comments, setComments] = useState(commentsCount);
 	const [showDeleteModal, setShowDeleteModal] = useState(false);
 	const [showComments, setShowComments] = useState(false);
 
@@ -125,6 +126,16 @@ const ClipCard = ({
 		window.location.reload();
 	};
 
+	const increaseCommentsCount = () => {
+		setComments(comments + 1);
+	};
+
+	const decreaseCommentsCount = () => {
+		if (comments > 0) {
+			setComments(comments - 1);
+		}
+	};
+
 	return (
 		<>
 			{showDeleteModal && (
@@ -170,7 +181,7 @@ const ClipCard = ({
 					</IconButton>
 					{dislikes}
 					<div className={classes.rightIcons}>
-						{commentsCount}
+						{comments}
 						<IconButton
 							aria-label="comment"
 							onClick={() => setShowComments(!showComments)}
@@ -181,7 +192,12 @@ const ClipCard = ({
 				</CardActions>
 				<Collapse in={showComments} timeout="auto" unmountOnExit>
 					<CardContent>
-						<CommentsSection loggedUser={currentUser} clipId={mongoClipId} />
+						<CommentsSection
+							loggedUser={currentUser}
+							clipId={mongoClipId}
+							increaseComments={increaseCommentsCount}
+							decreaseComments={decreaseCommentsCount}
+						/>
 					</CardContent>
 				</Collapse>
 			</Card>

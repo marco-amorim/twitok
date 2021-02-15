@@ -5,7 +5,12 @@ import { CommentDivider, CommentsContainer } from './styles';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-const CommentsSection = ({ loggedUser, clipId }) => {
+const CommentsSection = ({
+	loggedUser,
+	clipId,
+	increaseComments,
+	decreaseComments,
+}) => {
 	const handleSubmit = (values, actions) => {
 		const newDate = new Date();
 
@@ -37,6 +42,7 @@ const CommentsSection = ({ loggedUser, clipId }) => {
 		});
 
 		actions.resetForm();
+		increaseComments();
 	};
 
 	return (
@@ -62,6 +68,8 @@ CommentsSection.propTypes = {
 		name: PropTypes.string.isRequired,
 	}),
 	clipId: PropTypes.string.isRequired,
+	increaseComments: PropTypes.func.isRequired,
+	decreaseComments: PropTypes.func.isRequired,
 };
 
 export default CommentsSection;
