@@ -72,7 +72,7 @@ Comment.propTypes = {
 	date: PropTypes.string.isRequired,
 	time: PropTypes.string.isRequired,
 	decreaseComments: PropTypes.func.isRequired,
-	loggedUserId: PropTypes.string.isRequired,
+	loggedUserId: PropTypes.string,
 	commentUserId: PropTypes.string.isRequired,
 	clipId: PropTypes.string.isRequired,
 };

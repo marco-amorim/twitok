@@ -66,21 +66,22 @@ const CommentsSection = ({
 	};
 
 	const renderComments = () => {
-		console.log(comments);
 		return comments.map((comment, index) => {
 			return (
-				<Comment
-					key={index}
-					photoUrl={comment.user.image}
-					text={comment.text}
-					username={comment.user.name}
-					date={comment.date}
-					time={comment.time}
-					decreaseComments={decreaseComments}
-					loggedUserId={loggedUser.id}
-					commentUserId={comment.user.id}
-					clipId={clipId}
-				/>
+				<React.Fragment key={index}>
+					<Comment
+						photoUrl={comment.user.image}
+						text={comment.text}
+						username={comment.user.name}
+						date={comment.date}
+						time={comment.time}
+						decreaseComments={decreaseComments}
+						loggedUserId={loggedUser ? loggedUser.id : null}
+						commentUserId={comment.user.id}
+						clipId={clipId}
+					/>
+					<CommentDivider variant="inset" component="li" />
+				</React.Fragment>
 			);
 		});
 	};
@@ -88,7 +89,6 @@ const CommentsSection = ({
 	return (
 		<CommentsContainer>
 			{renderComments()}
-			<CommentDivider variant="inset" component="li" />
 			{loggedUser && <CommentInput onSubmit={handleSubmit} />}
 		</CommentsContainer>
 	);
