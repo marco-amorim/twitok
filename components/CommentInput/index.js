@@ -30,7 +30,7 @@ const CommentInput = ({ onSubmit }) => {
 				/>
 
 				<IconButton type="submit">
-					<AddComment />
+					<AddComment style={{ color: 'var(--purple-default)' }} />
 				</IconButton>
 			</CommentForm>
 		</CommentFormContainer>

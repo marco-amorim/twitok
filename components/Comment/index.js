@@ -57,7 +57,7 @@ const Comment = ({
 			{loggedUserId && loggedUserId === commentUserId ? (
 				<DeleteButtonContainer>
 					<IconButton aria-label="delete" onClick={handleDelete}>
-						<Delete />
+						<Delete style={{ color: 'var(--purple-default)' }} />
 					</IconButton>
 				</DeleteButtonContainer>
 			) : null}

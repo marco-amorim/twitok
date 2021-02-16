@@ -173,11 +173,19 @@ const ClipCard = ({
 
 				<CardActions disableSpacing>
 					<IconButton aria-label="like" onClick={handleLike}>
-						{isLiked ? <ThumbUp /> : <ThumbUpOutlined />}
+						{isLiked ? (
+							<ThumbUp style={{ color: 'var(--purple-default)' }} />
+						) : (
+							<ThumbUpOutlined style={{ color: 'var(--purple-default)' }} />
+						)}
 					</IconButton>
 					{likes}
 					<IconButton aria-label="dislike" onClick={handleDislike}>
-						{isDisliked ? <ThumbDown /> : <ThumbDownOutlined />}
+						{isDisliked ? (
+							<ThumbDown style={{ color: 'var(--purple-default)' }} />
+						) : (
+							<ThumbDownOutlined style={{ color: 'var(--purple-default)' }} />
+						)}
 					</IconButton>
 					{dislikes}
 					<div className={classes.rightIcons}>
@@ -186,7 +194,11 @@ const ClipCard = ({
 							aria-label="comment"
 							onClick={() => setShowComments(!showComments)}
 						>
-							{showComments ? <Comment /> : <CommentOutlined />}
+							{showComments ? (
+								<Comment style={{ color: 'var(--purple-default)' }} />
+							) : (
+								<CommentOutlined style={{ color: 'var(--purple-default)' }} />
+							)}
 						</IconButton>
 					</div>
 				</CardActions>
