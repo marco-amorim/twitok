@@ -89,8 +89,6 @@ const ClipCard = ({
 			} catch (error) {
 				console.log(error);
 			}
-		} else {
-			window.alert('Sign in to interact with clips! :]');
 		}
 	};
 
@@ -113,8 +111,6 @@ const ClipCard = ({
 			} catch (error) {
 				console.log(error);
 			}
-		} else {
-			window.alert('Sign in to interact with clips! :]');
 		}
 	};
 
