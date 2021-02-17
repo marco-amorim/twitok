@@ -4,6 +4,7 @@ import { PageContainer } from '../styles/PageContainer';
 import { PageTitle } from '../styles/PageTitle';
 import { useSession } from 'next-auth/client';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PageMessage } from '../styles/PageMessage';
 
 const ShareClip = () => {
 	const [session, loading] = useSession();
@@ -13,7 +14,7 @@ const ShareClip = () => {
 			return <ClipForm user={session.user} />;
 		}
 
-		return <h2>You need to be logged in for this :/</h2>;
+		return <PageMessage>You need to be logged in for this.</PageMessage>;
 	};
 
 	return (
