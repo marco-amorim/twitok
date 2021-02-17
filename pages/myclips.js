@@ -9,6 +9,7 @@ import { PageMessage } from '../styles/PageMessage';
 
 const MyClips = () => {
 	const [clips, setClips] = useState([]);
+	const [clipsLoading, setClipsLoading] = useState(true);
 	const [session, loading] = useSession();
 
 	useEffect(() => {
@@ -26,6 +27,8 @@ const MyClips = () => {
 			const { clips } = response.data;
 
 			setClips(clips);
+
+			setClipsLoading(false);
 		}
 	};
 
@@ -56,7 +59,9 @@ const MyClips = () => {
 			return <PageMessage>You need to sign in to see your clips.</PageMessage>;
 		}
 
-		return <PageMessage>You don't have any clips yet.</PageMessage>;
+		if (!clipsLoading && clips.length === 0) {
+			return <PageMessage>You don't have any clips yet.</PageMessage>;
+		}
 	};
 
 	return (

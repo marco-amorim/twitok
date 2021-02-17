@@ -176,7 +176,7 @@ const ClipCard = ({
 						{isLiked ? (
 							<ThumbUp style={{ color: 'var(--purple-default)' }} />
 						) : (
-							<ThumbUpOutlined style={{ color: 'var(--purple-default)' }} />
+							<ThumbUpOutlined />
 						)}
 					</IconButton>
 					{likes}
@@ -184,7 +184,7 @@ const ClipCard = ({
 						{isDisliked ? (
 							<ThumbDown style={{ color: 'var(--purple-default)' }} />
 						) : (
-							<ThumbDownOutlined style={{ color: 'var(--purple-default)' }} />
+							<ThumbDownOutlined />
 						)}
 					</IconButton>
 					{dislikes}
@@ -197,7 +197,7 @@ const ClipCard = ({
 							{showComments ? (
 								<Comment style={{ color: 'var(--purple-default)' }} />
 							) : (
-								<CommentOutlined style={{ color: 'var(--purple-default)' }} />
+								<CommentOutlined />
 							)}
 						</IconButton>
 					</div>

@@ -15,8 +15,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				return doc.comments;
 			});
 
-		console.log(commentsList);
-
 		res.status(200);
 		res.send({ commentsList: commentsList });
 	} catch (error) {
