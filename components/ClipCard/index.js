@@ -132,6 +132,12 @@ const ClipCard = ({
 		}
 	};
 
+	const handleShowComments = () => {
+		if (commentsCount > 0 || currentUser) {
+			setShowComments(!showComments);
+		}
+	};
+
 	return (
 		<>
 			{showDeleteModal && (
@@ -188,7 +194,7 @@ const ClipCard = ({
 						{comments}
 						<IconButton
 							aria-label="comment"
-							onClick={() => setShowComments(!showComments)}
+							onClick={() => handleShowComments()}
 						>
 							{showComments ? (
 								<Comment style={{ color: 'var(--purple-default)' }} />
