@@ -4,6 +4,7 @@ import Comment from '../Comment';
 import { CommentDivider, CommentsContainer } from './styles';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import ConfirmModal from '../ConfirmModal';
 
 const CommentsSection = ({
 	loggedUser,
@@ -14,6 +15,8 @@ const CommentsSection = ({
 	const [comments, setComments] = useState([]);
 	const [isDeleteEnabled, setIsDeleteEnabled] = useState(true);
 	const [isInputEnabled, setIsInputEnabled] = useState(true);
+	const [showDeleteModal, setShowDeleteModal] = useState(false);
+	const [commentId, setCommentId] = useState('');
 
 	useEffect(() => {
 		fetchComments();
@@ -69,9 +72,14 @@ const CommentsSection = ({
 
 				setTimeout(() => {
 					setIsInputEnabled(true);
-				}, 2000);
+				}, 1000);
 			}
 		}
+	};
+
+	const showDeleteModalAndGetCommentId = (commentId) => {
+		setCommentId(commentId);
+		setShowDeleteModal(true);
 	};
 
 	const handleDelete = (commentId) => {
@@ -97,6 +105,8 @@ const CommentsSection = ({
 				setTimeout(() => {
 					setIsDeleteEnabled(true);
 				}, 2000);
+
+				setShowDeleteModal(false);
 			}
 		}
 	};
@@ -115,7 +125,7 @@ const CommentsSection = ({
 						commentUserId={comment.user.id}
 						clipId={clipId}
 						commentId={comment._id}
-						onDelete={handleDelete}
+						onDelete={showDeleteModalAndGetCommentId}
 					/>
 					<CommentDivider variant="inset" component="li" />
 				</React.Fragment>
@@ -124,10 +134,22 @@ const CommentsSection = ({
 	};
 
 	return (
-		<CommentsContainer>
-			{renderComments()}
-			{loggedUser && <CommentInput onSubmit={handleSubmit} />}
-		</CommentsContainer>
+		<>
+			{showDeleteModal && (
+				<ConfirmModal
+					onConfirm={() => handleDelete(commentId)}
+					onDismiss={() => setShowDeleteModal(false)}
+					isOpen={showDeleteModal}
+					title="Delete Comment"
+					description="Are you sure you want to delete this Comment?"
+				/>
+			)}
+
+			<CommentsContainer>
+				{renderComments()}
+				{loggedUser && <CommentInput onSubmit={handleSubmit} />}
+			</CommentsContainer>
+		</>
 	);
 };
 
