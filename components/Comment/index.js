@@ -13,7 +13,6 @@ import {
 	DeleteButtonContainer,
 } from './styles';
 import { Delete } from '@material-ui/icons';
-import axios from 'axios';
 
 const Comment = ({
 	photoUrl,
@@ -21,19 +20,11 @@ const Comment = ({
 	text,
 	date,
 	time,
-	decreaseComments,
 	loggedUserId,
 	commentUserId,
-	clipId,
+	commentId,
+	onDelete,
 }) => {
-	const handleDelete = () => {
-		axios.delete('/api/clips/comments/delete', {
-			data: {
-				clipId: clipId,
-			},
-		});
-	};
-
 	return (
 		<CommentItem>
 			<ListItemAvatar>
@@ -56,7 +47,7 @@ const Comment = ({
 			/>
 			{loggedUserId && loggedUserId === commentUserId ? (
 				<DeleteButtonContainer>
-					<IconButton aria-label="delete" onClick={handleDelete}>
+					<IconButton aria-label="delete" onClick={() => onDelete(commentId)}>
 						<Delete />
 					</IconButton>
 				</DeleteButtonContainer>
@@ -71,10 +62,10 @@ Comment.propTypes = {
 	text: PropTypes.string.isRequired,
 	date: PropTypes.string.isRequired,
 	time: PropTypes.string.isRequired,
-	decreaseComments: PropTypes.func.isRequired,
 	loggedUserId: PropTypes.string,
 	commentUserId: PropTypes.string.isRequired,
-	clipId: PropTypes.string.isRequired,
+	commentId: PropTypes.string.isRequired,
+	onDelete: PropTypes.func.isRequired,
 };
 
 export default Comment;

@@ -6,7 +6,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		const { db } = await connect();
 
-		const { clipId } = req.body;
+		const { clipId, commentId } = req.body;
 
 		db.collection('clips').updateOne(
 			{
@@ -14,8 +14,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			},
 			{
 				$inc: { commentsCount: -1 },
-				// TODO: I need to create a comment ID in some way, so I can tell which comment should be deleted
-				$pull: { comments: 'Comment ID goes here' },
+				$pull: { comments: { _id: new ObjectID(commentId) } },
 			}
 		);
 

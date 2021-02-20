@@ -6,15 +6,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		const { db } = await connect();
 
+		db.listenerCount;
+
 		const { comment, clipId } = req.body;
+
+		const newComment = {
+			_id: new ObjectID(),
+			...comment,
+		};
 
 		db.collection('clips').updateOne(
 			{
 				_id: new ObjectID(clipId),
 			},
 			{
+				$push: { comments: newComment },
 				$inc: { commentsCount: 1 },
-				$push: { comments: comment },
 			}
 		);
 

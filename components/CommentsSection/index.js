@@ -65,6 +65,26 @@ const CommentsSection = ({
 		}
 	};
 
+	const handleDelete = (commentId) => {
+		try {
+			axios.delete('/api/clips/comments/delete', {
+				data: {
+					clipId: clipId,
+					commentId: commentId,
+				},
+			});
+		} catch (error) {
+			console.log(
+				'We are having trouble trying to delete the comment, error: ' + error
+			);
+		} finally {
+			setTimeout(() => {
+				decreaseComments();
+				fetchComments();
+			}, 500);
+		}
+	};
+
 	const renderComments = () => {
 		return comments.map((comment, index) => {
 			return (
@@ -75,10 +95,11 @@ const CommentsSection = ({
 						username={comment.user.name}
 						date={comment.date}
 						time={comment.time}
-						decreaseComments={decreaseComments}
 						loggedUserId={loggedUser ? loggedUser.id : null}
 						commentUserId={comment.user.id}
 						clipId={clipId}
+						commentId={comment._id}
+						onDelete={handleDelete}
 					/>
 					<CommentDivider variant="inset" component="li" />
 				</React.Fragment>
