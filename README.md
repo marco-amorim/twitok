@@ -20,7 +20,6 @@
 
 - SSO with Twitch / Google / Github
 - Share clips from Twitch
-- Delete clips
 - Like / Dislike voting system
 - Comments system
 
