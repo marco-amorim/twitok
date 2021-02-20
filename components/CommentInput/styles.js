@@ -10,6 +10,6 @@ export const CommentForm = styled(Form)`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin: 2rem auto 1.5rem auto;
-	width: 90%;
+	margin: 2rem 0 1.5rem 0;
+	width: 100%;
 `;

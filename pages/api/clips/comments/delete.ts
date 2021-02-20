@@ -11,6 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		db.collection('clips').updateOne(
 			{
 				_id: new ObjectID(clipId),
+				commentsCount: { $gt: 0 },
 			},
 			{
 				$inc: { commentsCount: -1 },

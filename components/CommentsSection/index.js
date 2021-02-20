@@ -12,6 +12,8 @@ const CommentsSection = ({
 	decreaseComments,
 }) => {
 	const [comments, setComments] = useState([]);
+	const [isDeleteEnabled, setIsDeleteEnabled] = useState(true);
+	const [isInputEnabled, setIsInputEnabled] = useState(true);
 
 	useEffect(() => {
 		fetchComments();
@@ -25,63 +27,77 @@ const CommentsSection = ({
 	};
 
 	const handleSubmit = async (values, actions) => {
-		try {
-			const newDate = new Date();
+		if (isInputEnabled) {
+			setIsInputEnabled(false);
+			try {
+				const newDate = new Date();
 
-			const hours = newDate.getHours();
-			const minutes = newDate.getMinutes();
+				const hours = newDate.getHours();
+				const minutes = newDate.getMinutes();
 
-			const formatedHours = hours < 10 ? '0' + hours : hours;
-			const formatedMinutes = minutes < 10 ? '0' + minutes : minutes;
+				const formatedHours = hours < 10 ? '0' + hours : hours;
+				const formatedMinutes = minutes < 10 ? '0' + minutes : minutes;
 
-			const time = formatedHours + ':' + formatedMinutes;
+				const time = formatedHours + ':' + formatedMinutes;
 
-			const date =
-				newDate.getDate() +
-				'/' +
-				(newDate.getMonth() + 1) +
-				'/' +
-				newDate.getFullYear();
+				const date =
+					newDate.getDate() +
+					'/' +
+					(newDate.getMonth() + 1) +
+					'/' +
+					newDate.getFullYear();
 
-			const newComment = {
-				...values,
-				user: loggedUser,
-				time: time,
-				date: date,
-			};
+				const newComment = {
+					...values,
+					user: loggedUser,
+					time: time,
+					date: date,
+				};
 
-			await axios.post('/api/clips/comments/create', {
-				comment: newComment,
-				clipId: clipId,
-			});
-		} catch (error) {
-			console.log(
-				'We are having trouble trying to create the comment, error: ' + error
-			);
-		} finally {
-			actions.resetForm();
-			increaseComments();
-			fetchComments();
+				await axios.post('/api/clips/comments/create', {
+					comment: newComment,
+					clipId: clipId,
+				});
+			} catch (error) {
+				console.log(
+					'We are having trouble trying to create the comment, error: ' + error
+				);
+			} finally {
+				actions.resetForm();
+				increaseComments();
+				fetchComments();
+
+				setTimeout(() => {
+					setIsInputEnabled(true);
+				}, 2000);
+			}
 		}
 	};
 
 	const handleDelete = (commentId) => {
-		try {
-			axios.delete('/api/clips/comments/delete', {
-				data: {
-					clipId: clipId,
-					commentId: commentId,
-				},
-			});
-		} catch (error) {
-			console.log(
-				'We are having trouble trying to delete the comment, error: ' + error
-			);
-		} finally {
-			setTimeout(() => {
-				decreaseComments();
-				fetchComments();
-			}, 500);
+		if (isDeleteEnabled) {
+			setIsDeleteEnabled(false);
+			try {
+				axios.delete('/api/clips/comments/delete', {
+					data: {
+						clipId: clipId,
+						commentId: commentId,
+					},
+				});
+			} catch (error) {
+				console.log(
+					'We are having trouble trying to delete the comment, error: ' + error
+				);
+			} finally {
+				setTimeout(() => {
+					decreaseComments();
+					fetchComments();
+				}, 750);
+
+				setTimeout(() => {
+					setIsDeleteEnabled(true);
+				}, 2000);
+			}
 		}
 	};
 
