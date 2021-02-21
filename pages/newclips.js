@@ -30,12 +30,19 @@ const NewClips = () => {
 		fetchClips();
 	}, [skip]);
 
-	const handleScroll = () => {
-		console.log('im inside handleScroll');
+	useEffect(() => {
+		addScrollToWindow();
 
+		return () => {
+			resetScrollOnWindow();
+		};
+	});
+
+	const handleScroll = () => {
 		if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-			console.log('im inside handleScroll if');
-			setSkip(clips.length);
+			if (skip != clips.length) {
+				setSkip(clips.length);
+			}
 		}
 	};
 
@@ -61,8 +68,16 @@ const NewClips = () => {
 		});
 	};
 
+	const addScrollToWindow = () => {
+		window.addEventListener('scroll', handleScroll);
+	};
+
+	const resetScrollOnWindow = () => {
+		window.removeEventListener('scroll', handleScroll);
+	};
+
 	return (
-		<PageContainer onWheel={handleScroll}>
+		<PageContainer>
 			<PageTitle>New Clips</PageTitle>
 			{loading ? (
 				<LoadingSpinner

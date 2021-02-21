@@ -10,8 +10,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				? Number(req.query.skip)
 				: 0;
 
-		console.log(skip);
-
 		const clips = await db
 			.collection('clips')
 			.find()
