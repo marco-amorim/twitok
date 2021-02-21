@@ -5,11 +5,13 @@ import { PageTitle } from '../styles/PageTitle';
 import { useSession } from 'next-auth/client';
 import ClipCard from '../components/ClipCard';
 import LoadingSpinner from '../components/LoadingSpinner';
+import InfiniteScroll from '../components/InfiniteScroll';
 
 const NewClips = () => {
 	const [clips, setClips] = useState([]);
 	const [skip, setSkip] = useState(0);
 	const [session, loading] = useSession();
+	const [loadingScroll, setLoadingScroll] = useState(false);
 
 	useEffect(() => {
 		const fetchClips = async () => {
@@ -17,34 +19,19 @@ const NewClips = () => {
 				const response = await axios.get(`/api/clips?skip=${skip}`);
 				const { data } = response.data;
 				if (clips.length > 0) {
-					console.log([...clips, ...data]);
 					setClips([...clips, ...data]);
 				} else {
 					setClips(data);
 				}
 			} catch (error) {
 				console.log(error);
+			} finally {
+				setLoadingScroll(false);
 			}
 		};
 
 		fetchClips();
 	}, [skip]);
-
-	useEffect(() => {
-		addScrollToWindow();
-
-		return () => {
-			resetScrollOnWindow();
-		};
-	});
-
-	const handleScroll = () => {
-		if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-			if (skip != clips.length) {
-				setSkip(clips.length);
-			}
-		}
-	};
 
 	const renderClips = () => {
 		return clips.map((clip, index) => {
@@ -68,14 +55,6 @@ const NewClips = () => {
 		});
 	};
 
-	const addScrollToWindow = () => {
-		window.addEventListener('scroll', handleScroll);
-	};
-
-	const resetScrollOnWindow = () => {
-		window.removeEventListener('scroll', handleScroll);
-	};
-
 	return (
 		<PageContainer>
 			<PageTitle>New Clips</PageTitle>
@@ -88,6 +67,13 @@ const NewClips = () => {
 			) : (
 				renderClips()
 			)}
+			<InfiniteScroll
+				loading={loadingScroll}
+				setLoading={setLoadingScroll}
+				amount={skip}
+				setAmount={setSkip}
+				data={clips}
+			/>
 		</PageContainer>
 	);
 };

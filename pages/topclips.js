@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useSession } from 'next-auth/client';
 import React, { useEffect, useState } from 'react';
 import ClipCard from '../components/ClipCard';
+import InfiniteScroll from '../components/InfiniteScroll';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PageContainer } from '../styles/PageContainer';
 import { PageTitle } from '../styles/PageTitle';
@@ -9,18 +10,28 @@ import { PageTitle } from '../styles/PageTitle';
 const TopClips = () => {
 	const [clips, setClips] = useState([]);
 	const [session, loading] = useSession();
+	const [skip, setSkip] = useState(0);
+	const [loadingScroll, setLoadingScroll] = useState(false);
 
 	useEffect(() => {
+		const fetchClips = async () => {
+			try {
+				const response = await axios.get(`/api/clips/top?skip=${skip}`);
+				const { data } = response.data;
+				if (clips.length > 0) {
+					setClips([...clips, ...data]);
+				} else {
+					setClips(data);
+				}
+			} catch (error) {
+				console.log(error);
+			} finally {
+				setLoadingScroll(false);
+			}
+		};
+
 		fetchClips();
-	}, []);
-
-	const fetchClips = async () => {
-		const response = await axios.get('/api/clips/top');
-
-		const { clips } = response.data;
-
-		setClips(clips);
-	};
+	}, [skip]);
 
 	return (
 		<PageContainer>
@@ -52,6 +63,13 @@ const TopClips = () => {
 					);
 				})
 			)}
+			<InfiniteScroll
+				loading={loadingScroll}
+				setLoading={setLoadingScroll}
+				amount={skip}
+				setAmount={setSkip}
+				data={clips}
+			/>
 		</PageContainer>
 	);
 };
