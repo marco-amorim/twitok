@@ -14,7 +14,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			.collection('clips')
 			.find()
 			.skip(skip)
-			.limit(2)
+			.limit(5)
 			.sort({ likesCount: -1 })
 			.toArray();
 

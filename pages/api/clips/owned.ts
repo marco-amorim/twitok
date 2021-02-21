@@ -16,7 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			.collection('clips')
 			.find({ 'user.id': userId })
 			.skip(skip)
-			.limit(2)
+			.limit(5)
 			.sort({ createdAt: -1 })
 			.toArray();
 
