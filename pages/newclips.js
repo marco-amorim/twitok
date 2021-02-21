@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { PageContainer } from '../styles/PageContainer';
 import { PageTitle } from '../styles/PageTitle';
 import { useSession } from 'next-auth/client';
@@ -8,18 +8,35 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 const NewClips = () => {
 	const [clips, setClips] = useState([]);
+	const [skip, setSkip] = useState(0);
 	const [session, loading] = useSession();
 
 	useEffect(() => {
+		const fetchClips = async () => {
+			try {
+				const response = await axios.get(`/api/clips?skip=${skip}`);
+				const { data } = response.data;
+				if (clips.length > 0) {
+					console.log([...clips, ...data]);
+					setClips([...clips, ...data]);
+				} else {
+					setClips(data);
+				}
+			} catch (error) {
+				console.log(error);
+			}
+		};
+
 		fetchClips();
-	}, []);
+	}, [skip]);
 
-	const fetchClips = async () => {
-		const response = await axios.get('/api/clips');
+	const handleScroll = () => {
+		console.log('im inside handleScroll');
 
-		const { clips } = response.data;
-
-		setClips(clips);
+		if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+			console.log('im inside handleScroll if');
+			setSkip(clips.length);
+		}
 	};
 
 	const renderClips = () => {
@@ -45,7 +62,7 @@ const NewClips = () => {
 	};
 
 	return (
-		<PageContainer>
+		<PageContainer onWheel={handleScroll}>
 			<PageTitle>New Clips</PageTitle>
 			{loading ? (
 				<LoadingSpinner
