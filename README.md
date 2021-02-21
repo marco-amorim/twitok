@@ -22,6 +22,7 @@
 - Share clips from Twitch
 - Like / Dislike voting system
 - Comments system
+- Infinite scrolling through clips
 
   <br />
   <br />
