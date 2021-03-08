@@ -8,5 +8,5 @@ export const CommentsContainer = styled(List)`
 `;
 
 export const CommentDivider = styled(Divider)`
-	width: 70%;
+	width: 80%;
 `;
