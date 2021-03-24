@@ -21,6 +21,7 @@
 - SSO with Twitch / Google / Github
 - Share clips from Twitch
 - Like / Dislike voting system
+- Ranking System
 - Comments system
 - Infinite scrolling through clips
 
