@@ -4,7 +4,7 @@
 
 ## Production
 
-- https://twitok.marcoamorim.com
+- https://twitoktv.vercel.app
 
 ## Technologies
 
